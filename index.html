@@ -254,7 +254,7 @@ footer a:hover{color:var(--violet)}
 <div id="starfield"><canvas id="starCanvas"></canvas></div>
 
 <header id="mobile-bar">
-<a class="m-logo" href="#hero">Parfait <em>R.</em></a>
+<a class="m-logo" href="#hero">John <em>R.</em></a>
 <div class="m-controls">
 <button class="toggle" id="mLang">EN</button>
 <button class="toggle" id="mTheme">◑</button>
@@ -263,7 +263,7 @@ footer a:hover{color:var(--violet)}
 
 <nav id="sidenav">
 <div>
-<a class="nav-logo" href="#hero">Parfait <em>R.</em></a>
+<a class="nav-logo" href="#hero">John <em>R.</em></a>
 <ul class="nav-links">
 <li><a href="#about" class="fr">À propos</a><a href="#about" class="en">About</a></li>
 <li><a href="#projects" class="fr">Projets</a><a href="#projects" class="en">Projects</a></li>
@@ -287,7 +287,7 @@ footer a:hover{color:var(--violet)}
 <span class="fr">Développeur Full-Stack · Madagascar · Remote</span>
 <span class="en">Full-Stack Developer · Madagascar · Remote</span>
 </p>
-<h1 class="hero-name">Parfait<br/><em>Rakotomalala</em></h1>
+<h1 class="hero-name">John<br/><em>Doe</em></h1>
 <p class="hero-role">
 <span class="fr">Je construis des systèmes qui fonctionnent — même sans réseau.</span>
 <span class="en">I build systems that work — even without a network.</span>
@@ -346,7 +346,14 @@ footer a:hover{color:var(--violet)}
         <div class="dl-row"><span class="dl-k"><span class="fr">Problème</span><span class="en">Problem</span></span><span class="dl-v"><span class="fr">Étudiants en zones peu connectées — <strong>impossible d'interroger les cours hors ligne.</strong></span><span class="en">Students in low-connectivity areas — <strong>can't query course materials offline.</strong></span></span></div>
         <div class="dl-row"><span class="dl-k"><span class="fr">Architecture</span><span class="en">Arch</span></span><span class="dl-v"><span class="fr"><strong>SQLite local</strong> comme source de vérité. Embeddings compressés on-device. LLM si réseau, fallback lexical sinon.</span><span class="en"><strong>Local SQLite</strong> as source of truth. Compressed embeddings on-device. External LLM online, lexical fallback offline.</span></span></div>
         <div class="dl-row"><span class="dl-k">Trade-offs</span><span class="dl-v"><span class="fr">Qualité RAG offline inférieure — <strong>délai accepté par design.</strong></span><span class="en">Offline RAG lower quality — <strong>latency accepted by design.</strong></span></span></div>
-        <div class="dl-row"><span class="dl-k"><span class="fr">Résultat</span><span class="en">Outcome</span></span><span class="dl-v"><span class="fr"><strong>En production.</strong> Recherche offline, partage de ressources, monétisation vidéo.</span><span class="en"><strong>Live in production.</strong> Offline search, resource sharing, video monetization.</span></span></div>
+        <!-- <div class="dl-row"><span class="dl-k"><span class="fr">Résultat</span><span class="en">Outcome</span></span><span class="dl-v"><span class="fr"><strong>En production.</strong> Recherche offline, partage de ressources, monétisation vidéo.</span><span class="en"><strong>Live in production.</strong> Offline search, resource sharing, video monetization.</span></span></div> -->
+        <div class="dl-row">
+  <span class="dl-k"><span class="fr">Résultat</span><span class="en">Outcome</span></span>
+  <span class="dl-v">
+    <span class="fr"><strong>En production.</strong> ~X utilisateurs actifs · Y cours indexés · recherche offline fonctionnelle à 100% sans réseau.</span>
+    <span class="en"><strong>Live in production.</strong> ~X active users · Y courses indexed · offline search working 100% without network.</span>
+  </span>
+</div>
       </div>
       <div class="proj-stack"><span class="stk">React Native</span><span class="stk">Expo</span><span class="stk">Node.js</span><span class="stk">PostgreSQL</span><span class="stk">SQLite</span><span class="stk">RAG</span><span class="stk">TypeScript</span></div>
       <div class="proj-links"><a href="mailto:your@email.com?subject=StudyHub%20demo" class="btn btn-fill"><span class="fr">Demander la démo →</span><span class="en">Request demo →</span></a></div>
@@ -366,7 +373,13 @@ footer a:hover{color:var(--violet)}
         <div class="dl-row"><span class="dl-k"><span class="fr">Problème</span><span class="en">Problem</span></span><span class="dl-v"><span class="fr">Les apps de budget <strong>envoient tes données financières vers un serveur.</strong> Bloquant pour beaucoup.</span><span class="en">Budget apps <strong>send your financial data to a server.</strong> A dealbreaker for many users.</span></span></div>
         <div class="dl-row"><span class="dl-k"><span class="fr">Architecture</span><span class="en">Arch</span></span><span class="dl-v"><span class="fr"><strong>Aucune donnée ne quitte l'appareil.</strong> SQLite via Expo. Schéma relationnel : catégories, objectifs, tendances.</span><span class="en"><strong>No data leaves the device.</strong> SQLite via Expo. Full relational schema: categories, goals, trend charts.</span></span></div>
         <div class="dl-row"><span class="dl-k">Trade-offs</span><span class="dl-v"><span class="fr">Pas de sync multi-appareils — <strong>décision assumée.</strong></span><span class="en">No cross-device sync — <strong>deliberate design choice.</strong></span></span></div>
-        <div class="dl-row"><span class="dl-k"><span class="fr">Résultat</span><span class="en">Outcome</span></span><span class="dl-v"><span class="fr"><strong>Code public.</strong> Catégories, objectifs, graphiques — 100% local.</span><span class="en"><strong>Public code.</strong> Category tracking, goals, charts — 100% local.</span></span></div>
+          <div class="dl-row">
+            <span class="dl-k"><span class="fr">Résultat</span><span class="en">Outcome</span></span>
+            <span class="dl-v">
+              <span class="fr"><strong>Code public.</strong> Catégories, objectifs, graphiques de tendance — 100% local. Aucune donnée ne quitte l'appareil, zéro backend requis.</span>
+              <span class="en"><strong>Public code.</strong> Categories, goals, trend charts — 100% local. No data leaves the device, zero backend required.</span>
+            </span>
+          </div>
       </div>
       <div class="proj-stack"><span class="stk">React Native</span><span class="stk">Expo</span><span class="stk">SQLite</span><span class="stk">TypeScript</span></div>
       <div class="proj-links"><a href="https://github.com/your-username/budget-app" target="_blank" rel="noopener" class="btn btn-ghost">GitHub →</a></div>
@@ -430,6 +443,13 @@ footer a:hover{color:var(--violet)}
     <p class="ct-sub en">Open to a junior remote role or freelance contract. Reply within 24h — English or French.</p>
     <a href="mailto:your@email.com" class="btn btn-fill"><span class="fr">Envoyer un email →</span><span class="en">Send an email →</span></a>
     <div class="ct-table">
+        <div class="ct-row">
+          <span class="ct-k"><span class="fr">Missions</span><span class="en">Available for</span></span>
+          <span class="ct-v">
+            <span class="fr">MVP mobile · Intégration API · Architecture offline-first · Devis sur demande</span>
+            <span class="en">Mobile MVP · API integration · Offline-first architecture · Quote on request</span>
+          </span>
+        </div>
       <div class="ct-row"><span class="ct-k">Email</span><a href="mailto:your@email.com" class="ct-v">your@email.com</a></div>
       <div class="ct-row"><span class="ct-k">GitHub</span><a href="https://github.com/your-username" target="_blank" rel="noopener" class="ct-v">github.com/your-username</a></div>
       <div class="ct-row"><span class="ct-k">LinkedIn</span><a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" class="ct-v">linkedin.com/in/your-profile</a></div>
@@ -443,7 +463,7 @@ footer a:hover{color:var(--violet)}
 </main>
 
 <footer>
-<p>© 2025 Parfait Rakotomalala</p>
+<p>© 2025 John Doe</p>
 <a href="#hero"><span class="fr">↑ Haut</span><span class="en">↑ Top</span></a>
 </footer>
 
