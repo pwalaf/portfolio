@@ -1,676 +1,2328 @@
-<!DOCTYPE html>
-<html lang="fr" data-theme="dark" data-lang="fr">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pwalaf Rakotondrabe — Full-Stack Developer</title>
-<meta name="description" content="Junior full-stack developer — React Native, Node.js, SQL, Applied Math. Offline-first. Madagascar, remote."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-:root {
---bg: #0a0a1a;
---bg2: #0f172a;
---bg3: #1e293b;
---ink: #f1f5f9;
---ink2: #cbd5e1;
---ink3: #64748b;
---line: rgba(241,245,249,.07);
---line2: rgba(241,245,249,.14);
---violet: #8b5cf6;
---violet-l: #a78bfa;
---grad: linear-gradient(135deg,#896ad1,#411985);
---serif: 'Playfair Display', Georgia, serif;     
---display: 'Syne', system-ui, sans-serif;
---mono: 'JetBrains Mono', monospace;
---nav-w: 240px;
---ease: 220ms cubic-bezier(.4,0,.2,1);
---r: 6px;
---max: 740px;
+<!doctype html>
+<html lang="fr" data-theme="light" data-lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parfait Rakotomalala — Full-Stack Developer</title>
+    <meta property="og:title" content="Parfait Rakotomalala — Full-Stack Developer" />
+    <meta property="og:description" content="Junior full-stack developer — React Native, Node.js, offline-first. Madagascar." />
+    <meta
+      name="description"
+      content="Junior full-stack developer — React Native, Node.js, SQL, Applied Math. Offline-first. Madagascar, remote."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #05051a;
+        --bg2: #0a0a2e;
+        --bg3: #12123d;
+        --ink: #f1f5f9;
+        --ink2: #c4c9e2;
+        --ink3: #6b7280;
+        --line: rgba(167, 139, 250, 0.08);
+        --line2: rgba(167, 139, 250, 0.16);
+        --violet: #7c3aed;
+        --violet-l: #a855f7;
+        --grad: linear-gradient(135deg, #7c3aed, #a855f7);
+        --serif: "Playfair Display", Georgia, serif;
+        --display: "Syne", system-ui, sans-serif;
+        --mono: "JetBrains Mono", monospace;
+        --nav-w: 240px;
+        --ease: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+        --r: 6px;
+        --max: 740px;
+      }
+
+      [data-theme="light"] {
+        --bg: #fafafa;
+        --bg2: #f4f4f8;
+        --bg3: #ededf5;
+        --ink: #0a0a1a;
+        --ink2: #3b3a52;
+        --ink3: #7c7a9a;
+        --line: rgba(124, 58, 237, 0.09);
+        --line2: rgba(124, 58, 237, 0.18);
+        --violet: #6d28d9;
+        --violet-l: #7c3aed;
+        --grad: linear-gradient(135deg, #6d28d9, #a855f7);
+      }
+
+      [data-theme="light"] #hero {
+        background: #fafafa;
+      }
+
+      [data-theme="light"] #sidenav {
+        background: rgba(250, 250, 250, 0.94);
+        border-right-color: rgba(124, 58, 237, 0.12);
+      }
+
+      [data-theme="light"] #mobile-bar {
+        background: rgba(250, 250, 250, 0.95);
+        border-bottom-color: rgba(124, 58, 237, 0.12);
+      }
+
+      [data-theme="light"] .stat {
+        background: #ededf5;
+        border-color: rgba(124, 58, 237, 0.15);
+      }
+
+      [data-theme="light"] .stk {
+        color: #6d28d9;
+        background: rgba(109, 40, 217, 0.08);
+        border-color: rgba(109, 40, 217, 0.2);
+      }
+
+
+      [data-theme="light"] .ap-n {
+        color: rgba(10, 10, 26, 0.06);
+      }
+
+      [data-theme="light"] #starfield {
+        opacity: 0.08;
+      }
+
+      [data-theme="light"] section::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(124, 58, 237, 0.1),
+          transparent
+        );
+      }
+      .fr,
+      .en {
+        display: none !important;
+      }
+      [data-lang="fr"] .fr {
+        display: revert !important;
+      }
+      [data-lang="en"] .en {
+        display: revert !important;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        font-size: 17px;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        font-family: var(--display);
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.7;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* STARFIELD */
+      #starfield {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.4;
+      }
+      #starfield canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* SIDEBAR */
+      #sidenav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: var(--nav-w);
+        height: 100vh;
+        padding: 2.5rem 1.75rem;
+        border-right: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 300;
+        background: rgba(10, 10, 26, 0.88);
+        backdrop-filter: blur(16px);
+      }
+      .nav-logo {
+        font-family: var(--serif);
+        font-size: 1.45rem;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        display: block;
+        margin-bottom: 3rem;
+      }
+      .nav-logo em {
+        font-style: italic;
+        color: var(--violet);
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.08rem;
+      }
+      .nav-links a {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink3);
+        padding: 0.55rem 0;
+        display: block;
+        transition: color var(--ease);
+        position: relative;
+      }
+      .nav-links a::before {
+        content: "";
+        position: absolute;
+        left: -1.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 0;
+        background: var(--violet);
+        transition: height var(--ease);
+      }
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+      .nav-links a.active {
+        color: var(--violet);
+      }
+      .nav-links a.active::before {
+        height: 18px;
+      }
+      .nav-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .toggle {
+        background: none;
+        border: 1px solid var(--line2);
+        border-radius: var(--r);
+        color: var(--ink3);
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.07em;
+        padding: 0.38rem 0.65rem;
+        cursor: pointer;
+        transition: all var(--ease);
+      }
+      .toggle:hover {
+        border-color: var(--violet);
+        color: var(--violet);
+      }
+
+      /* MAIN */
+      #page {
+        margin-left: var(--nav-w);
+        position: relative;
+        z-index: 1;
+      }
+      section {
+        padding: 8rem 4vw;
+        border-bottom: 1px solid var(--line);
+        position: relative;
+      }
+      section:last-child {
+        border-bottom: none;
+      }
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(139, 92, 246, 0.12),
+          transparent
+        );
+      }
+      #hero::before {
+        display: none;
+      }
+      .inner {
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 0.63rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--violet);
+        margin-bottom: 2.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .eyebrow::before {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: var(--violet);
+        flex-shrink: 0;
+      }
+
+      /* HERO */
+      #hero {
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+      }
+
+      [data-theme="light"] #hero {
+        background: #f1f5f9;
+      }
+
+      [data-theme="light"] .ap-n {
+        color: rgba(10, 10, 26, 0.06);
+      }
+
+      #heroCanvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+      #heroZone {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 4rem 2rem;
+        max-width: 820px;
+      }
+
+      .hero-eyebrow {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--violet-l);
+        margin-bottom: 2.25rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 1.2s forwards;
+      }
+      .hero-name {
+        font-family: var(--serif);
+        font-size: clamp(4rem, 7.5vw, 7.5rem);
+        font-weight: 400;
+        letter-spacing: -0.03em;
+        line-height: 0.95;
+        margin-bottom: 0.85rem;
+        opacity: 0;
+        animation: fadeUp 0.9s ease 1.5s forwards;
+      }
+      .hero-name em {
+        font-style: italic;
+        color: var(--violet-l);
+      }
+      .hero-role {
+        font-family: var(--serif);
+        font-size: clamp(1.2rem, 2.3vw, 1.65rem);
+        font-style: italic;
+        color: var(--ink2);
+        margin-bottom: 1.3rem;
+        line-height: 1.4;
+        opacity: 0;
+        animation: fadeUp 0.9s ease 1.8s forwards;
+      }
+      .hero-value {
+        font-size: 1.1rem;
+        color: var(--ink2);
+        margin: 0 auto 3rem;
+        max-width: 540px;
+        line-height: 1.85;
+        opacity: 0;
+        animation: fadeUp 0.9s ease 2.1s forwards;
+      }
+      .hero-value strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 3rem;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 2.3s forwards;
+      }
+      .tag {
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.05em;
+        color: var(--ink3);
+        border: 1px solid var(--line2);
+        padding: 0.28rem 0.7rem;
+        border-radius: 100px;
+        transition: all var(--ease);
+      }
+      .tag:hover {
+        border-color: var(--violet);
+        color: var(--violet-l);
+      }
+      .cta-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeUp 0.8s ease 2.5s forwards;
+      }
+      .btn {
+        font-family: var(--display);
+        font-size: 0.92rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        padding: 0.78rem 1.7rem;
+        border-radius: var(--r);
+        cursor: pointer;
+        transition: all var(--ease);
+        border: 1.5px solid transparent;
+        display: inline-block;
+      }
+      .btn-fill {
+        background: var(--grad);
+        color: #fff;
+        box-shadow: 0 4px 28px rgba(139, 92, 246, 0.3);
+      }
+      .btn-fill:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 36px rgba(139, 92, 246, 0.45);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--ink2);
+        border-color: var(--line2);
+      }
+      .btn-ghost:hover {
+        border-color: var(--violet);
+        color: var(--violet-l);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* MOBILE */
+      @media (max-width: 900px) {
+        #sidenav {
+          display: none;
+        }
+        #page,
+        footer {
+          margin-left: 0;
+        }
+        #mobile-bar {
+          display: flex;
+        }
+        section {
+          padding: 5rem 1.5rem;
+        }
+      }
+
+      #mobileMenu {
+  display: none;
+  position: fixed;
+  top: 52px;
+  left: 0;
+  right: 0;
+  z-index: 299;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line2);
+  padding: 1rem 1.5rem 1.5rem;
 }
-.fr,.en{display:none!important}
-[data-lang=fr] .fr{display:revert!important}
-[data-lang=en] .en{display:revert!important}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:17px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:var(--display);background:var(--bg);color:var(--ink);line-height:1.7}
-a{color:inherit;text-decoration:none}
-
-/* STARFIELD */
-#starfield{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4}
-#starfield canvas{position:absolute;inset:0;width:100%;height:100%}
-
-/* SIDEBAR */
-#sidenav{
-position:fixed;top:0;left:0;width:var(--nav-w);height:100vh;
-padding:2.5rem 1.75rem;border-right:1px solid var(--line);
-display:flex;flex-direction:column;justify-content:space-between;
-z-index:300;background:rgba(10,10,26,.88);backdrop-filter:blur(16px);
+#mobileMenu.open {
+  display: block;
 }
-.nav-logo{font-family:var(--serif);font-size:1.45rem;font-weight:400;letter-spacing:-.02em;color:var(--ink);display:block;margin-bottom:3rem}
-.nav-logo em{font-style:italic;color:var(--violet)}
-.nav-links{list-style:none;display:flex;flex-direction:column;gap:.08rem}
-.nav-links a{
-font-family:var(--mono);font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
-color:var(--ink3);padding:0.55rem 0;display:block;transition:color var(--ease);position:relative;
+#mobileMenu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
-.nav-links a::before{content:'';position:absolute;left:-1.75rem;top:50%;transform:translateY(-50%);width:3px;height:0;background:var(--violet);transition:height var(--ease)}
-.nav-links a:hover{color:var(--ink)}
-.nav-links a.active{color:var(--violet)}
-.nav-links a.active::before{height:18px}
-.nav-bottom{display:flex;flex-direction:column;gap:.5rem}
-.toggle{background:none;border:1px solid var(--line2);border-radius:var(--r);color:var(--ink3);font-family:var(--mono);font-size:.62rem;letter-spacing:.07em;padding:.38rem .65rem;cursor:pointer;transition:all var(--ease)}
-.toggle:hover{border-color:var(--violet);color:var(--violet)}
-
-/* MAIN */
-#page{margin-left:var(--nav-w);position:relative;z-index:1}
-section{padding:8rem 4vw;border-bottom:1px solid var(--line);position:relative}
-section:last-child{border-bottom:none}
-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.12),transparent)}
-#hero::before{display:none}
-.inner{max-width:var(--max);margin:0 auto}
-.eyebrow{font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem}
-.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--violet);flex-shrink:0}
-
-/* HERO */
-#hero{
-padding:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-position:relative;overflow:hidden;background:#0a0a1a;border-bottom:1px solid var(--line);
+#mobileMenu a {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  padding: 0.75rem 0;
+  display: block;
+  border-bottom: 1px solid var(--line);
+  transition: color var(--ease);
 }
-#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-#heroZone{position:absolute;inset:0;z-index:1}
-.hero-inner{position:relative;z-index:2;text-align:center;padding:4rem 2rem;max-width:820px}
-
-.hero-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-l);margin-bottom:2.25rem;opacity:0;animation:fadeUp .8s ease 1.2s forwards}
-.hero-name{font-family:var(--serif);font-size:clamp(4rem,7.5vw,7.5rem);font-weight:400;letter-spacing:-.03em;line-height:.95;margin-bottom:.85rem;opacity:0;animation:fadeUp .9s ease 1.5s forwards}
-.hero-name em{font-style:italic;color:var(--violet-l)}
-.hero-role{font-family:var(--serif);font-size:clamp(1.2rem,2.3vw,1.65rem);font-style:italic;color:var(--ink2);margin-bottom:1.3rem;line-height:1.4;opacity:0;animation:fadeUp .9s ease 1.8s forwards}
-.hero-value{font-size:1.1rem;color:var(--ink2);margin:0 auto 3rem;max-width:540px;line-height:1.85;opacity:0;animation:fadeUp .9s ease 2.1s forwards}
-.hero-value strong{color:var(--ink);font-weight:600}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:3rem;justify-content:center;opacity:0;animation:fadeUp .8s ease 2.3s forwards}
-.tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;color:var(--ink3);border:1px solid var(--line2);padding:.28rem .7rem;border-radius:100px;transition:all var(--ease)}
-.tag:hover{border-color:var(--violet);color:var(--violet-l)}
-.cta-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .8s ease 2.5s forwards}
-.btn{font-family:var(--display);font-size:.92rem;font-weight:600;letter-spacing:.02em;padding:.78rem 1.7rem;border-radius:var(--r);cursor:pointer;transition:all var(--ease);border:1.5px solid transparent;display:inline-block}
-.btn-fill{background:var(--grad);color:#fff;box-shadow:0 4px 28px rgba(139,92,246,.3)}
-.btn-fill:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(139,92,246,.45)}
-.btn-ghost{background:transparent;color:var(--ink2);border-color:var(--line2)}
-.btn-ghost:hover{border-color:var(--violet);color:var(--violet-l)}
-.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fadeIn 1s ease 3.5s forwards}
-.scroll-hint::after{content:'';display:block;width:1px;height:40px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:nudge 2.5s ease-in-out infinite}
-@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-/* MOBILE */
-@media(max-width:900px){
-#sidenav{display:none}
-#page,footer{margin-left:0}
-#mobile-bar{display:flex}
-section{padding:5rem 1.5rem}
+#mobileMenu a:hover {
+  color: var(--violet);
 }
 
-/* ABOUT */
-.about-text{font-family:var(--serif);font-size:1.3rem;font-weight:400;line-height:1.9;color:var(--ink2);margin-bottom:2.5rem}
-.about-text strong{color:var(--ink);font-weight:600}
-.kv-list{display:flex;flex-direction:column}
-.kv{display:grid;grid-template-columns:145px 1fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line);align-items:baseline}
-.kv:last-child{border-bottom:none}
-.kv-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
-.kv-v{font-size:1rem;color:var(--ink2);line-height:1.55}
+      /* ABOUT */
+      .about-text {
+        font-family: var(--serif);
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.9;
+        color: var(--ink2);
+        margin-bottom: 2.5rem;
+      }
+      .about-text strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .kv-list {
+        display: flex;
+        flex-direction: column;
+      }
+      .kv {
+        display: grid;
+        grid-template-columns: 145px 1fr;
+        gap: 1rem;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--line);
+        align-items: baseline;
+      }
+      .kv:last-child {
+        border-bottom: none;
+      }
+      .kv-k {
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink3);
+      }
+      .kv-v {
+        font-size: 1rem;
+        color: var(--ink2);
+        line-height: 1.55;
+      }
 
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
-.stat{padding:1.5rem;border:1px solid var(--line);border-radius:var(--r);background:var(--bg3);text-align:center;transition:border-color var(--ease),transform var(--ease)}
-.stat:hover{border-color:var(--violet);transform:translateY(-3px)}
-.stat-n{font-family:var(--serif);font-size:2.6rem;font-weight:600;color:var(--violet-l);line-height:1;margin-bottom:.35rem}
-.stat-l{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+      .stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+        margin-top: 3rem;
+      }
+      .stat {
+        padding: 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        background: var(--bg3);
+        text-align: center;
+        transition:
+          border-color var(--ease),
+          transform var(--ease);
+      }
+      .stat:hover {
+        border-color: var(--violet);
+        transform: translateY(-3px);
+      }
+      .stat-n {
+        font-family: var(--serif);
+        font-size: 2.6rem;
+        font-weight: 600;
+        color: var(--violet-l);
+        line-height: 1;
+        margin-bottom: 0.35rem;
+      }
+      .stat-l {
+        font-family: var(--mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink3);
+      }
 
-/* PROJECTS */
-.proj{padding:3.5rem 0;border-top:1px solid var(--line)}
-.proj:first-child{border-top:none;padding-top:0}
-.proj-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.75rem;flex-wrap:wrap}
-.proj-name{font-family:var(--serif);font-size:2.1rem;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
-.proj-badge{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);border:1px solid var(--line2);padding:.2rem .55rem;border-radius:3px;flex-shrink:0}
-.proj-tagline{font-family:var(--mono);font-size:.8rem;color:var(--ink3);letter-spacing:.03em;margin-bottom:2rem}
+      /* PROJECTS */
+      .proj {
+        padding: 3.5rem 0;
+        border-top: 1px solid var(--line);
+      }
+      .proj:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+      .proj-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .proj-name {
+        font-family: var(--serif);
+        font-size: 2.1rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+      .proj-badge {
+        font-family: var(--mono);
+        font-size: 0.56rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink3);
+        border: 1px solid var(--line2);
+        padding: 0.2rem 0.55rem;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+      .proj-tagline {
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        color: var(--ink3);
+        letter-spacing: 0.03em;
+        margin-bottom: 2rem;
+      }
 
-.video-slot{
-  width:100%;aspect-ratio:16/9;background:var(--bg3);border:1px solid var(--line2);border-radius:8px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;
-  cursor:pointer;transition:all var(--ease);margin-bottom:2rem;position:relative;overflow:hidden;
-}
-.video-slot::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity var(--ease)}
-.video-slot:hover::before{opacity:.05}
-.video-slot:hover{border-color:var(--violet);box-shadow:0 0 0 4px rgba(139,92,246,.1)}
-.play-btn{width:56px;height:56px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(139,92,246,.5);transition:transform var(--ease);position:relative;z-index:1}
-.video-slot:hover .play-btn{transform:scale(1.1)}
-.play-btn svg{width:20px;height:20px;fill:#fff;margin-left:3px}
-.slot-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);position:relative;z-index:1}
+      .proj-badge.live {
+        color: #99da5d;
+      }
 
-.detail-list{display:flex;flex-direction:column;margin-bottom:1.75rem}
-.dl-row{display:grid;grid-template-columns:110px 1fr;gap:.75rem;padding:.75rem 0;border-bottom:1px solid var(--line);align-items:baseline}
-.dl-row:last-child{border-bottom:none}
-.dl-k{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
-.dl-v{font-size:1rem;color:var(--ink2);line-height:1.75}
-.dl-v strong{color:var(--ink);font-weight:600}
+ 
 
-.proj-stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.5rem}
-.stk{font-family:var(--mono);font-size:.62rem;color:var(--violet-l);background:rgba(139,92,246,.1);padding:.22rem .55rem;border-radius:4px;border:1px solid rgba(139,92,246,.2)}
-.proj-links{display:flex;gap:.75rem;flex-wrap:wrap}
-.proj-links .btn{font-size:.82rem;padding:.55rem 1.1rem}
+      .detail-list {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.75rem;
+      }
+      .dl-row {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 0.75rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--line);
+        align-items: baseline;
+      }
+      .dl-row:last-child {
+        border-bottom: none;
+      }
+      .dl-k {
+        font-family: var(--mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink3);
+      }
+      .dl-v {
+        font-size: 1rem;
+        color: var(--ink2);
+        line-height: 1.75;
+      }
+      .dl-v strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
 
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem 3.5rem}
-.sk-group h3{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
-.sk-list{list-style:none}
-.sk-list li{display:flex;justify-content:space-between;align-items:center;font-size:.98rem;color:var(--ink2);padding:.5rem 0;border-bottom:1px solid var(--line)}
-.sk-list li:last-child{border-bottom:none}
-.sk-lvl{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;color:var(--ink3)}
-.sk-lvl.hi{color:#fff;background:var(--grad);padding:.16rem .48rem;border-radius:3px;font-weight:500}
-.skills-note{margin-top:2.5rem;font-size:.92rem;color:var(--ink3);font-style:italic;border-left:2px solid var(--violet);padding-left:1rem;line-height:1.75}
+      .proj-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-bottom: 1.5rem;
+      }
+      .stk {
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        color: var(--violet-l);
+        background: rgba(139, 92, 246, 0.1);
+        padding: 0.22rem 0.55rem;
+        border-radius: 4px;
+        border: 1px solid rgba(139, 92, 246, 0.2);
+      }
+      .proj-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .proj-links .btn {
+        font-size: 0.82rem;
+        padding: 0.55rem 1.1rem;
+      }
 
-/* APPROACH */
-.ap-item{display:grid;grid-template-columns:60px 1fr;gap:2rem;padding:2.25rem 0;border-bottom:1px solid var(--line)}
-.ap-item:last-child{border-bottom:none}
-.ap-n{font-family:var(--serif);font-size:2.2rem;font-style:italic;color:rgba(241,245,249,.1);padding-top:.1rem;line-height:1;transition:color var(--ease)}
-.ap-item:hover .ap-n{color:var(--violet-l)}
-.ap-body h4{font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.45rem}
-.ap-body p{font-size:1rem;color:var(--ink2);line-height:1.8}
-.ap-body p strong{color:var(--ink);font-weight:600}
+      /* SKILLS */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem 3.5rem;
+      }
+      .sk-group h3 {
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--violet);
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .sk-list {
+        list-style: none;
+      }
+      .sk-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.98rem;
+        color: var(--ink2);
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .sk-list li:last-child {
+        border-bottom: none;
+      }
+      .sk-lvl {
+        font-family: var(--mono);
+        font-size: 0.56rem;
+        letter-spacing: 0.08em;
+        color: var(--ink3);
+      }
+      .sk-lvl.hi {
+        color: #fff;
+        background: var(--grad);
+        padding: 0.16rem 0.48rem;
+        border-radius: 3px;
+        font-weight: 500;
+      }
+      .skills-note {
+        margin-top: 2.5rem;
+        font-size: 0.92rem;
+        color: var(--ink3);
+        font-style: italic;
+        border-left: 2px solid var(--violet);
+        padding-left: 1rem;
+        line-height: 1.75;
+      }
 
-/* CONTACT */
-#contact{display:flex;align-items:center;min-height:60vh}
-.ct-head{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4.2rem);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:1.1rem}
-.ct-head em{font-style:italic;color:var(--violet-l)}
-.ct-sub{font-size:1.05rem;color:var(--ink2);margin-bottom:2.5rem;line-height:1.8;max-width:480px}
-.ct-table{display:flex;flex-direction:column;margin-top:2.5rem}
-.ct-row{display:grid;grid-template-columns:88px 1fr;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line);align-items:center}
-.ct-row:last-child{border-bottom:none}
-.ct-k{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
-.ct-v{font-size:.95rem;color:var(--ink2);transition:color var(--ease)}
-.ct-v:hover{color:var(--violet-l)}
+      /* APPROACH */
+      .ap-item {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 2rem;
+        padding: 2.25rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .ap-item:last-child {
+        border-bottom: none;
+      }
+      .ap-n {
+        font-family: var(--serif);
+        font-size: 2.2rem;
+        font-style: italic;
+        color: rgba(241, 245, 249, 0.1);
+        padding-top: 0.1rem;
+        line-height: 1;
+        transition: color var(--ease);
+      }
+      .ap-item:hover .ap-n {
+        color: var(--violet-l);
+      }
+      .ap-body h4 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 0.45rem;
+      }
+      .ap-body p {
+        font-size: 1rem;
+        color: var(--ink2);
+        line-height: 1.8;
+      }
+      .ap-body p strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
 
-/* FOOTER */
-footer{margin-left:var(--nav-w);padding:1.5rem 4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
-footer p,footer a{font-family:var(--mono);font-size:.6rem;color:var(--ink3)}
-footer a:hover{color:var(--violet)}
+      /* CONTACT */
+      #contact {
+        display: flex;
+        align-items: center;
+        min-height: 60vh;
+      }
+      .ct-head {
+        font-family: var(--serif);
+        font-size: clamp(2.2rem, 5vw, 4.2rem);
+        font-weight: 400;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin-bottom: 1.1rem;
+      }
+      .ct-head em {
+        font-style: italic;
+        color: var(--violet-l);
+      }
+      .ct-sub {
+        font-size: 1.05rem;
+        color: var(--ink2);
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+        max-width: 480px;
+      }
+      .ct-table {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2.5rem;
+      }
+      .ct-row {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 1rem;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--line);
+        align-items: center;
+      }
+      .ct-row:last-child {
+        border-bottom: none;
+      }
+      .ct-k {
+        font-family: var(--mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink3);
+      }
+      .ct-v {
+        font-size: 0.95rem;
+        color: var(--ink2);
+        transition: color var(--ease);
+      }
+      .ct-v:hover {
+        color: var(--violet-l);
+      }
 
-/* MOBILE BAR */
-#mobile-bar{display:none;position:sticky;top:0;z-index:300;background:rgba(10,10,26,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:.85rem 1.5rem;justify-content:space-between;align-items:center}
-.m-logo{font-family:var(--serif);font-size:1.1rem;color:var(--ink)}
-.m-logo em{font-style:italic;color:var(--violet)}
-.m-controls{display:flex;gap:.4rem}
+      /* FOOTER */
+      footer {
+        margin-left: var(--nav-w);
+        padding: 1.5rem 4rem;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      footer p,
+      footer a {
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        color: var(--ink3);
+      }
+      footer a:hover {
+        color: var(--violet);
+      }
 
+      /* MOBILE BAR */
+      #mobile-bar {
+        display: none;
+        position: sticky;
+        top: 0;
+        z-index: 300;
+        background: rgba(10, 10, 26, 0.9);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+        padding: 0.85rem 1.5rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .m-logo {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        color: var(--ink);
+      }
+      .m-logo em {
+        font-style: italic;
+        color: var(--violet);
+      }
+      .m-controls {
+        display: flex;
+        gap: 0.4rem;
+      }
 
-/* REVEAL PROGRESSIF AU SCROLL */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.85s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
+      /* REVEAL PROGRESSIF AU SCROLL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.85s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
 
-.reveal.in {
-    opacity: 1;
-    transform: translateY(0);
-}
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-/* Stagger (décalage progressif) pour les enfants */
-.reveal-child {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.85s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
+      /* Stagger (décalage progressif) pour les enfants */
+      .reveal-child {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.85s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
 
-.reveal-child.in {
-    opacity: 1;
-    transform: translateY(0);
-}
+      .reveal-child.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-/* MODAL */
-#videoModal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);backdrop-filter:blur(12px);align-items:center;justify-content:center}
-.modal-box{position:relative;width:min(90vw,900px)}
-.modal-inner{width:100%;aspect-ratio:16/9;background:#0f172a;border-radius:10px;border:1px solid rgba(139,92,246,.3);display:flex;align-items:center;justify-content:center}
-.modal-inner p{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:center;padding:2rem}
-.modal-close{position:absolute;top:-14px;right:-14px;width:32px;height:32px;border-radius:50%;background:#1e293b;border:1px solid rgba(139,92,246,.3);color:var(--ink2);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all var(--ease)}
-.modal-close:hover{background:var(--violet);color:#fff}
-
-/* MOBILE */
-@media(max-width:900px){
-  #sidenav{display:none}
-  #page,footer{margin-left:0}
-  #mobile-bar{display:flex}
-  section{padding:5rem 1.5rem}
-  .skills-grid{grid-template-columns:1fr 1fr}
-  .stat-row{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:560px){
-  .skills-grid{grid-template-columns:1fr}
-  .kv{grid-template-columns:1fr;gap:.2rem}
-  .dl-row{grid-template-columns:1fr;gap:.2rem}
-  .stat-row{grid-template-columns:1fr}
-}
-</style>
-</head>
-<body>
-<div id="starfield"><canvas id="starCanvas"></canvas></div>
+      /* MOBILE */
+      @media (max-width: 900px) {
+        #sidenav {
+          display: none;
+        }
+        #page,
+        footer {
+          margin-left: 0;
+        }
+        #mobile-bar {
+          display: flex;
+        }
+        section {
+          padding: 5rem 1.5rem;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-row {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .kv {
+          grid-template-columns: 1fr;
+          gap: 0.2rem;
+        }
+        .dl-row {
+          grid-template-columns: 1fr;
+          gap: 0.2rem;
+        }
+        .stat-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="starfield"><canvas id="starCanvas"></canvas></div>
 
 <header id="mobile-bar">
-<a class="m-logo" href="#hero">John <em>R.</em></a>
-<div class="m-controls">
-<button class="toggle" id="mLang">EN</button>
-<button class="toggle" id="mTheme">◑</button>
-</div>
+  <a class="m-logo" href="#hero">Parfait <em>R.</em></a>
+  <div class="m-controls">
+    <button class="toggle" id="mLang">EN</button>
+    <button class="toggle" id="mTheme">◑</button>
+    <button class="toggle" id="burgerBtn">☰</button>
+  </div>
 </header>
 
-<nav id="sidenav">
-<div>
-<a class="nav-logo" href="#hero">John <em>R.</em></a>
-<ul class="nav-links">
-<li><a href="#about" class="fr">À propos</a><a href="#about" class="en">About</a></li>
-<li><a href="#projects" class="fr">Projets</a><a href="#projects" class="en">Projects</a></li>
-<li><a href="#skills" class="fr">Compétences</a><a href="#skills" class="en">Skills</a></li>
-<li><a href="#approach" class="fr">Méthode</a><a href="#approach" class="en">Approach</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+<div id="mobileMenu">
+  <ul>
+    <li><a href="#about" onclick="closeMenu()"><span class="fr">À propos</span><span class="en">About</span></a></li>
+    <li><a href="#services" onclick="closeMenu()"><span class="fr">Services</span><span class="en">Services</span></a></li>
+    <li><a href="#projects" onclick="closeMenu()"><span class="fr">Projets</span><span class="en">Projects</span></a></li>
+    <li><a href="#skills" onclick="closeMenu()"><span class="fr">Compétences</span><span class="en">Skills</span></a></li>
+    <li><a href="#approach" onclick="closeMenu()"><span class="fr">Méthode</span><span class="en">Approach</span></a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
 </div>
-<div class="nav-bottom">
-<button class="toggle" id="langToggle">EN</button>
-<button class="toggle" id="themeToggle">◑</button>
-</div>
-</nav>
 
-<main id="page">
-<section id="hero">
-<canvas id="heroCanvas"></canvas>
-<div id="heroZone"></div>
-<div class="hero-inner">
-<p class="hero-eyebrow">
-<span class="fr">Développeur Full-Stack · Madagascar · Remote</span>
-<span class="en">Full-Stack Developer · Madagascar · Remote</span>
-</p>
-<h1 class="hero-name">John<br/><em>Doe</em></h1>
-<p class="hero-role">
-<span class="fr">Je construis des systèmes qui fonctionnent — même sans réseau.</span>
-<span class="en">I build systems that work — even without a network.</span>
-</p>
-<p class="hero-value">
-<span class="fr"><strong>React Native · Node.js · SQL</strong> — formation en mathématiques appliquées. Spécialité : applications <strong>offline-first</strong> pour environnements contraints.</span>
-<span class="en"><strong>React Native · Node.js · SQL</strong> — applied mathematics background. Specialty: <strong>offline-first</strong> mobile apps for real constraints.</span>
-</p>
-<div class="tags">
-<span class="tag">React Native</span><span class="tag">Node.js</span>
-<span class="tag">PostgreSQL · SQLite</span><span class="tag">Offline-first</span>
-<span class="tag">RAG / LLM</span><span class="tag">Applied Math</span><span class="tag">TypeScript</span>
-</div>
-<div class="cta-row">
-<a href="#projects" class="btn btn-fill"><span class="fr">Voir les projets →</span><span class="en">View projects →</span></a>
-<a href="#contact" class="btn btn-ghost">Contact</a>
-</div>
-</div>
-</section>
+    <nav id="sidenav">
+      <div>
+        <a class="nav-logo" href="#hero">Parfait <em>R.</em></a>
+        <ul class="nav-links">
+          <li>
+            <a href="#about" class="fr">À propos</a
+            ><a href="#about" class="en">About</a>
+          </li>
+          <li>
+            <a href="#services" class="fr">Services</a
+            ><a href="#services" class="en">Services</a>
+          </li>
+          <li>
+            <a href="#projects" class="fr">Projets</a
+            ><a href="#projects" class="en">Projects</a>
+          </li>
+          <li>
+            <a href="#skills" class="fr">Compétences</a
+            ><a href="#skills" class="en">Skills</a>
+          </li>
+          <li>
+            <a href="#approach" class="fr">Méthode</a
+            ><a href="#approach" class="en">Approach</a>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav-bottom">
+        <button class="toggle" id="langToggle">EN</button>
+        <button class="toggle" id="themeToggle">◑</button>
+      </div>
+    </nav>
 
- <section id="about">
-  <div class="inner reveal">
-    <span class="eyebrow"><span class="fr">À propos</span><span class="en">About</span></span>
-    <p class="about-text fr">Développeur full-stack avec une formation en <strong>mathématiques appliquées</strong> — optimisation, probabilités, graphes. Je modélise les contraintes avant d'écrire la première ligne de code. Travailler depuis Madagascar m'a appris à concevoir des systèmes <strong>robustes sans dépendance réseau</strong>.</p>
-    <p class="about-text en">Full-stack developer with a background in <strong>applied mathematics</strong> — optimization, probability, graph theory. I model constraints before writing a single line of code. Working from Madagascar taught me to build systems that are <strong>robust without network dependency</strong>.</p>
-    <div class="kv-list">
-      <div class="kv"><span class="kv-k"><span class="fr">Niveau</span><span class="en">Level</span></span><span class="kv-v"><span class="fr">Junior · projets complets en production</span><span class="en">Junior · full projects shipped to production</span></span></div>
-      <div class="kv"><span class="kv-k"><span class="fr">Formation</span><span class="en">Education</span></span><span class="kv-v"><span class="fr">M1 Maths Appliquées · Licence GL & BDD · M1 Gouvernance Données (en cours)</span><span class="en">M1 Applied Math · BSc Software Eng. & DB · M1 Data Governance (ongoing)</span></span></div>
-      <div class="kv"><span class="kv-k">Stack</span><span class="kv-v">React Native · Expo · Node.js · PostgreSQL · SQLite · TypeScript</span></div>
-      <div class="kv"><span class="kv-k"><span class="fr">Dispo</span><span class="en">Available</span></span><span class="kv-v"><span class="fr">Immédiate · Remote · Full-time ou freelance</span><span class="en">Immediate · Remote · Full-time or freelance</span></span></div>
-      <div class="kv"><span class="kv-k">Timezone</span><span class="kv-v">UTC+3 · <span class="fr">Europe & Afrique</span><span class="en">Europe & Africa overlap</span></span></div>
-    </div>
-    <div class="stat-row">
-      <div class="stat"><div class="stat-n">2</div><div class="stat-l"><span class="fr">Projets en prod</span><span class="en">Projects in prod</span></div></div>
-      <div class="stat"><div class="stat-n">3+</div><div class="stat-l"><span class="fr">Ans d'études avancées</span><span class="en">Yrs advanced study</span></div></div>
-      <div class="stat"><div class="stat-n">0</div><div class="stat-l"><span class="fr">Projets sans fin</span><span class="en">Forever WIP projects</span></div></div>
-    </div>
-  </div>
-</section>
+    <main id="page">
+      <section id="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div id="heroZone"></div>
+        <div class="hero-inner">
+          <p class="hero-eyebrow">
+            <span class="fr">Développeur Full-Stack · Madagascar · Remote</span>
+            <span class="en">Full-Stack Developer · Madagascar · Remote</span>
+          </p>
+          <h1 class="hero-name">Parfait<br /><em>Rakotomalala</em></h1>
+          <p class="hero-role">
+            <span class="fr"
+              >J’aide les petites structures et formateurs à gérer leurs
+              clients, revenus et opérations — même sans internet.</span
+            >
+            <span class="en"
+              >I help small businesses and educators manage clients, revenue and
+              operations — even without internet.</span
+            >
+          </p>
 
-<section id="projects">
-  <div class="inner">
-    <span class="eyebrow reveal"><span class="fr">Projets</span><span class="en">Projects</span></span>
+          <p class="hero-value">
+            <span class="fr"
+              >Je construis des outils simples qui remplacent Excel, WhatsApp et
+              le chaos — pour gagner du temps et mieux organiser votre
+              activité.</span
+            >
+            <span class="en"
+              >I build simple tools that replace spreadsheets and manual work —
+              so you save time and run your business smoothly.</span
+            >
+          </p>
 
-    <article class="proj reveal">
-      <div class="proj-head">
-        <h3 class="proj-name">StudyHub</h3>
-        <span class="proj-badge"><span class="fr">PRIVÉ · DÉMO DISPO</span><span class="en">PRIVATE · DEMO AVAIL.</span></span>
-      </div>
-      <p class="proj-tagline"><span class="fr">Plateforme académique mobile · RAG offline · Cours & communauté</span><span class="en">Mobile academic platform · Offline RAG · Courses & community</span></p>
-      <div class="video-slot" onclick="openVideo()">
-        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <span class="slot-label"><span class="fr">Démo vidéo</span><span class="en">Video demo</span></span>
-      </div>
-      <div class="detail-list">
-        <div class="dl-row"><span class="dl-k"><span class="fr">Problème</span><span class="en">Problem</span></span><span class="dl-v"><span class="fr">Étudiants en zones peu connectées — <strong>impossible d'interroger les cours hors ligne.</strong></span><span class="en">Students in low-connectivity areas — <strong>can't query course materials offline.</strong></span></span></div>
-        <div class="dl-row"><span class="dl-k"><span class="fr">Architecture</span><span class="en">Arch</span></span><span class="dl-v"><span class="fr"><strong>SQLite local</strong> comme source de vérité. Embeddings compressés on-device. LLM si réseau, fallback lexical sinon.</span><span class="en"><strong>Local SQLite</strong> as source of truth. Compressed embeddings on-device. External LLM online, lexical fallback offline.</span></span></div>
-        <div class="dl-row"><span class="dl-k">Trade-offs</span><span class="dl-v"><span class="fr">Qualité RAG offline inférieure — <strong>délai accepté par design.</strong></span><span class="en">Offline RAG lower quality — <strong>latency accepted by design.</strong></span></span></div>
-        <!-- <div class="dl-row"><span class="dl-k"><span class="fr">Résultat</span><span class="en">Outcome</span></span><span class="dl-v"><span class="fr"><strong>En production.</strong> Recherche offline, partage de ressources, monétisation vidéo.</span><span class="en"><strong>Live in production.</strong> Offline search, resource sharing, video monetization.</span></span></div> -->
-        <div class="dl-row">
-  <span class="dl-k"><span class="fr">Résultat</span><span class="en">Outcome</span></span>
-  <span class="dl-v">
-    <span class="fr"><strong>En production.</strong> ~X utilisateurs actifs · Y cours indexés · recherche offline fonctionnelle à 100% sans réseau.</span>
-    <span class="en"><strong>Live in production.</strong> ~X active users · Y courses indexed · offline search working 100% without network.</span>
-  </span>
-</div>
-      </div>
-      <div class="proj-stack"><span class="stk">React Native</span><span class="stk">Expo</span><span class="stk">Node.js</span><span class="stk">PostgreSQL</span><span class="stk">SQLite</span><span class="stk">RAG</span><span class="stk">TypeScript</span></div>
-      <div class="proj-links"><a href="mailto:your@email.com?subject=StudyHub%20demo" class="btn btn-fill"><span class="fr">Demander la démo →</span><span class="en">Request demo →</span></a></div>
-    </article>
-
-    <article class="proj reveal">
-      <div class="proj-head">
-        <h3 class="proj-name">Budget App</h3>
-        <span class="proj-badge">OPEN SOURCE</span>
-      </div>
-      <p class="proj-tagline"><span class="fr">Suivi budgétaire offline-first · Zéro donnée transmise</span><span class="en">Offline-first budget tracker · Zero data transmitted</span></p>
-      <div class="video-slot" onclick="openVideo()">
-        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <span class="slot-label"><span class="fr">Démo vidéo</span><span class="en">Video demo</span></span>
-      </div>
-      <div class="detail-list">
-        <div class="dl-row"><span class="dl-k"><span class="fr">Problème</span><span class="en">Problem</span></span><span class="dl-v"><span class="fr">Les apps de budget <strong>envoient tes données financières vers un serveur.</strong> Bloquant pour beaucoup.</span><span class="en">Budget apps <strong>send your financial data to a server.</strong> A dealbreaker for many users.</span></span></div>
-        <div class="dl-row"><span class="dl-k"><span class="fr">Architecture</span><span class="en">Arch</span></span><span class="dl-v"><span class="fr"><strong>Aucune donnée ne quitte l'appareil.</strong> SQLite via Expo. Schéma relationnel : catégories, objectifs, tendances.</span><span class="en"><strong>No data leaves the device.</strong> SQLite via Expo. Full relational schema: categories, goals, trend charts.</span></span></div>
-        <div class="dl-row"><span class="dl-k">Trade-offs</span><span class="dl-v"><span class="fr">Pas de sync multi-appareils — <strong>décision assumée.</strong></span><span class="en">No cross-device sync — <strong>deliberate design choice.</strong></span></span></div>
-          <div class="dl-row">
-            <span class="dl-k"><span class="fr">Résultat</span><span class="en">Outcome</span></span>
-            <span class="dl-v">
-              <span class="fr"><strong>Code public.</strong> Catégories, objectifs, graphiques de tendance — 100% local. Aucune donnée ne quitte l'appareil, zéro backend requis.</span>
-              <span class="en"><strong>Public code.</strong> Categories, goals, trend charts — 100% local. No data leaves the device, zero backend required.</span>
-            </span>
+          <div class="tags">
+            <span class="tag">React Native</span
+            ><span class="tag">Node.js</span>
+            <span class="tag">PostgreSQL · SQLite</span
+            ><span class="tag">Offline-first</span>
+            <span class="tag">RAG / LLM</span
+            ><span class="tag">Applied Math</span
+            ><span class="tag">TypeScript</span>
           </div>
-      </div>
-      <div class="proj-stack"><span class="stk">React Native</span><span class="stk">Expo</span><span class="stk">SQLite</span><span class="stk">TypeScript</span></div>
-      <div class="proj-links"><a href="https://github.com/your-username/budget-app" target="_blank" rel="noopener" class="btn btn-ghost">GitHub →</a></div>
-    </article>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="inner reveal">
-    <span class="eyebrow"><span class="fr">Compétences</span><span class="en">Skills</span></span>
-    <div class="skills-grid">
-      <div class="sk-group">
-        <h3><span class="fr">Maîtrise</span><span class="en">Core</span></h3>
-        <ul class="sk-list">
-          <li>JavaScript / TypeScript <span class="sk-lvl hi">CORE</span></li>
-          <li>React Native + Expo <span class="sk-lvl hi">CORE</span></li>
-          <li>Node.js / REST APIs <span class="sk-lvl hi">CORE</span></li>
-          <li>PostgreSQL · SQLite <span class="sk-lvl hi">CORE</span></li>
-          <li>HTML / CSS <span class="sk-lvl hi">CORE</span></li>
-          <li>Git <span class="sk-lvl hi">CORE</span></li>
-        </ul>
-      </div>
-      <div class="sk-group">
-        <h3><span class="fr">Mathématiques</span><span class="en">Mathematics</span></h3>
-        <ul class="sk-list">
-          <li><span class="fr">Optimisation convexe</span><span class="en">Convex optimization</span> <span class="sk-lvl hi">STRONG</span></li>
-          <li><span class="fr">Probabilités & stats</span><span class="en">Probability & stats</span> <span class="sk-lvl hi">STRONG</span></li>
-          <li><span class="fr">Théorie des graphes</span><span class="en">Graph theory</span> <span class="sk-lvl hi">STRONG</span></li>
-          <li><span class="fr">Recherche opéra.</span><span class="en">Operations research</span> <span class="sk-lvl">SOLID</span></li>
-        </ul>
-      </div>
-      <div class="sk-group">
-        <h3><span class="fr">En progression</span><span class="en">Growing</span></h3>
-        <ul class="sk-list">
-          <li>RAG pipelines <span class="sk-lvl">APPLIED</span></li>
-          <li><span class="fr">Intégration LLM</span><span class="en">LLM integration</span> <span class="sk-lvl">LEARNING</span></li>
-          <li><span class="fr">Gouvernance données</span><span class="en">Data governance</span> <span class="sk-lvl">LEARNING</span></li>
-          <li>Python / NumPy <span class="sk-lvl">FAMILIAR</span></li>
-        </ul>
-      </div>
-    </div>
-    <p class="skills-note"><span class="fr">Tout ce qui est listé peut être défendu lors d'un entretien technique. Pas de padding de CV.</span><span class="en">Everything listed can be defended in a technical interview. No résumé padding.</span></p>
-  </div>
-</section>
-
-<section id="approach">
-  <div class="inner reveal">
-    <span class="eyebrow"><span class="fr">Méthode de travail</span><span class="en">How I work</span></span>
-    <div class="ap-item"><span class="ap-n">01</span><div class="ap-body"><h4><span class="fr">Contraintes d'abord</span><span class="en">Constraints first</span></h4><p class="fr">Ma formation en maths m'a appris à <strong>formaliser le problème avant de l'attaquer.</strong> Ça évite de refactorer à mi-chemin.</p><p class="en">My math background taught me to <strong>formalize the problem before solving it.</strong> That prevents mid-project rewrites.</p></div></div>
-    <div class="ap-item"><span class="ap-n">02</span><div class="ap-body"><h4><span class="fr">Offline-first comme discipline</span><span class="en">Offline-first as discipline</span></h4><p class="fr">Travailler depuis Madagascar était un <strong>forcing function.</strong> Séparer état local et serveur, gérer les conflits, ne jamais supposer le réseau.</p><p class="en">Working from Madagascar was a <strong>forcing function.</strong> Separate local from server state, handle conflicts, never assume network availability.</p></div></div>
-    <div class="ap-item"><span class="ap-n">03</span><div class="ap-body"><h4><span class="fr">Honnêteté sur le périmètre</span><span class="en">Honest about scope</span></h4><p class="fr"><strong>J'ai intégré un pipeline RAG en production</strong> — je comprends ses limites. Je préfère être précis sur ce que je sais faire.</p><p class="en"><strong>I've shipped a RAG pipeline to production</strong> — I understand its limitations. I'd rather be precise about what I can do.</p></div></div>
-    <div class="ap-item"><span class="ap-n">04</span><div class="ap-body"><h4><span class="fr">Livraison avant perfectionnisme</span><span class="en">Shipping over perfecting</span></h4><p class="fr">StudyHub est en production. Budget App est open source. <strong>Je construis des choses qui existent.</strong></p><p class="en">StudyHub is live. Budget App is open source. <strong>I build things that actually exist.</strong></p></div></div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="inner reveal">
-    <span class="eyebrow">Contact</span>
-    <h2 class="ct-head"><span class="fr">Un problème concret ?<br/><em>Parlons-en.</em></span><span class="en">A concrete problem?<br/><em>Let's talk.</em></span></h2>
-    <p class="ct-sub fr">Disponible pour un poste remote junior ou une mission freelance. Réponse sous 24h — français ou anglais.</p>
-    <p class="ct-sub en">Open to a junior remote role or freelance contract. Reply within 24h — English or French.</p>
-    <a href="mailto:your@email.com" class="btn btn-fill"><span class="fr">Envoyer un email →</span><span class="en">Send an email →</span></a>
-    <div class="ct-table">
-        <div class="ct-row">
-          <span class="ct-k"><span class="fr">Missions</span><span class="en">Available for</span></span>
-          <span class="ct-v">
-            <span class="fr">MVP mobile · Intégration API · Architecture offline-first · Devis sur demande</span>
-            <span class="en">Mobile MVP · API integration · Offline-first architecture · Quote on request</span>
-          </span>
+          <div class="cta-row">
+            <a href="#projects" class="btn btn-fill"
+              ><span class="fr">Voir les projets →</span
+              ><span class="en">View projects →</span></a
+            >
+            <a href="#contact" class="btn btn-ghost">
+              <span class="fr">Obtenir un prototype gratuit →</span>
+              <span class="en">Get a free prototype →</span>
+            </a>
+          </div>
         </div>
-      <div class="ct-row"><span class="ct-k">Email</span><a href="mailto:your@email.com" class="ct-v">your@email.com</a></div>
-      <div class="ct-row"><span class="ct-k">GitHub</span><a href="https://github.com/your-username" target="_blank" rel="noopener" class="ct-v">github.com/your-username</a></div>
-      <div class="ct-row"><span class="ct-k">LinkedIn</span><a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" class="ct-v">linkedin.com/in/your-profile</a></div>
-      <div class="ct-row"><span class="ct-k"><span class="fr">Lieu</span><span class="en">Location</span></span><span class="ct-v">Madagascar · UTC+3 · Remote</span></div>
-      <div class="ct-row"><span class="ct-k"><span class="fr">Langues</span><span class="en">Languages</span></span><span class="ct-v"><span class="fr">Français (natif) · Anglais (pro)</span><span class="en">French (native) · English (professional)</span></span></div>
-      <div class="ct-row"><span class="ct-k">CV</span><a href="cv.pdf" target="_blank" rel="noopener" class="ct-v"><span class="fr">Télécharger ↓</span><span class="en">Download ↓</span></a></div>
-    </div>
-  </div>
-</section>
+      </section>
 
-</main>
+      <section id="about">
+        <div class="inner reveal">
+          <span class="eyebrow"
+            ><span class="fr">À propos</span><span class="en">About</span></span
+          >
+          <p class="about-text fr">
+            Développeur full-stack avec une formation en
+            <strong>mathématiques appliquées</strong> — optimisation,
+            probabilités, graphes. Je modélise les contraintes avant d'écrire la
+            première ligne de code. Travailler depuis Madagascar m'a appris à
+            concevoir des systèmes
+            <strong>robustes sans dépendance réseau</strong>.
+          </p>
+          <p class="about-text en">
+            Full-stack developer with a background in
+            <strong>applied mathematics</strong> — optimization, probability,
+            graph theory. I model constraints before writing a single line of
+            code. Working from Madagascar taught me to build systems that are
+            <strong>robust without network dependency</strong>.
+          </p>
+          <div class="kv-list">
+            <div class="kv">
+              <span class="kv-k"
+                ><span class="fr">Niveau</span
+                ><span class="en">Level</span></span
+              ><span class="kv-v"
+                ><span class="fr">Junior · projets complets en production</span
+                ><span class="en"
+                  >Junior · full projects shipped to production</span
+                ></span
+              >
+            </div>
+            <div class="kv">
+              <span class="kv-k"
+                ><span class="fr">Formation</span
+                ><span class="en">Education</span></span
+              ><span class="kv-v"
+                ><span class="fr"
+                  >M1 Maths Appliquées · Licence GL & BDD · M1 Gouvernance
+                  Données (en cours)</span
+                ><span class="en"
+                  >M1 Applied Math · BSc Software Eng. & DB · M1 Data Governance
+                  (ongoing)</span
+                ></span
+              >
+            </div>
+            <div class="kv">
+              <span class="kv-k">Stack</span
+              ><span class="kv-v"
+                >React Native · Expo · Node.js · PostgreSQL · SQLite ·
+                TypeScript</span
+              >
+            </div>
+            <div class="kv">
+              <span class="kv-k"
+                ><span class="fr">Dispo</span
+                ><span class="en">Available</span></span
+              ><span class="kv-v"
+                ><span class="fr"
+                  >Immédiate · Remote · Full-time ou freelance</span
+                ><span class="en"
+                  >Immediate · Remote · Full-time or freelance</span
+                ></span
+              >
+            </div>
+            <div class="kv">
+              <span class="kv-k">Timezone</span
+              ><span class="kv-v"
+                >UTC+3 · <span class="fr">Europe & Afrique</span
+                ><span class="en">Europe & Africa overlap</span></span
+              >
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-n">2</div>
+              <div class="stat-l">
+                <span class="fr">Projets en prod</span
+                ><span class="en">Projects in prod</span>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">3+</div>
+              <div class="stat-l">
+                <span class="fr">Ans d'études avancées</span
+                ><span class="en">Yrs advanced study</span>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">0</div>
+              <div class="stat-l">
+                <span class="fr">Projets sans fin</span
+                ><span class="en">Forever WIP projects</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-<footer>
-<p>© 2025 John Doe</p>
-<a href="#hero"><span class="fr">↑ Haut</span><span class="en">↑ Top</span></a>
-</footer>
+      <section id="services">
+        <div class="inner reveal">
+          <span class="eyebrow">
+            <span class="fr">Ce que je peux faire pour vous</span>
+            <span class="en">How I can help</span>
+          </span>
 
-<div id="videoModal">
-<div class="modal-box">
-<div class="modal-inner" id="videoContainer">
-<p><span class="fr">Lien vidéo à ajouter</span><span class="en">Video link to be added</span></p>
-</div>
-<button class="modal-close" onclick="closeVideo()">×</button>
-</div>
-</div>
+          <div class="ap-item">
+            <span class="ap-n">01</span>
+            <div class="ap-body">
+              <h4>
+                <span class="fr">Système de gestion</span
+                ><span class="en">Management systems</span>
+              </h4>
+              <p class="fr">
+                Clients, paiements, suivi — je remplace Excel et WhatsApp par un
+                outil <strong>fait pour vous.</strong>
+              </p>
+              <p class="en">
+                Clients, payments, tracking — I replace spreadsheets and manual
+                work with a tool <strong>built for you.</strong>
+              </p>
+            </div>
+          </div>
 
-<script>
-// STARFIELD 
-(function(){
-const c=document.getElementById('starCanvas');
-const ctx=c.getContext('2d');
-let stars=[];
-function resize(){c.width=window.innerWidth;c.height=window.innerHeight}
-function init(){stars=[];for(let i=0;i<180;i++)stars.push({x:Math.random()*c.width,y:Math.random()*c.height,r:.3+Math.random()*.8,a:.2+Math.random()*.7,p:Math.random()*Math.PI*2,ps:.003+Math.random()*.007})}
-function draw(){ctx.clearRect(0,0,c.width,c.height);stars.forEach(s=>{s.p+=s.ps;const a=s.a*(.5+.5*Math.sin(s.p));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(203,213,225,${a})`;ctx.fill()});requestAnimationFrame(draw)}
-resize();init();draw();window.addEventListener('resize',()=>{resize();init()});
-})();
+          <div class="ap-item">
+            <span class="ap-n">02</span>
+            <div class="ap-body">
+              <h4>
+                <span class="fr">Dashboard personnalisé</span
+                ><span class="en">Custom dashboard</span>
+              </h4>
+              <p class="fr">
+                Visualisez vos revenus, vos clients, vos tendances —
+                <strong>sans chercher dans dix fichiers.</strong>
+              </p>
+              <p class="en">
+                See your revenue, clients, and trends —
+                <strong>without digging through ten files.</strong>
+              </p>
+            </div>
+          </div>
 
-// BLACK HOLE
-(function(){
-const canvas = document.getElementById('heroCanvas');
-const zone = document.getElementById('heroZone');
-const ctx = canvas.getContext('2d');
-let W, H, mouse={x:0,y:0}, particles=[], lines=[], bh=[];
-let startTime = Date.now();
+          <div class="ap-item">
+            <span class="ap-n">03</span>
+            <div class="ap-body">
+              <h4>
+                <span class="fr">Applications offline-first</span
+                ><span class="en">Offline-first apps</span>
+              </h4>
+              <p class="fr">
+                Votre outil fonctionne
+                <strong>même sans internet.</strong> Conçu pour les zones peu
+                connectées.
+              </p>
+              <p class="en">
+                Your app works <strong>even without internet.</strong> Built for
+                low-connectivity environments.
+              </p>
+            </div>
+          </div>
 
-function resize(){
-    const dpr = window.devicePixelRatio || 1;
-    const w = window.innerWidth, h = window.innerHeight;
-    canvas.width = w * dpr; canvas.height = h * dpr;
-    ctx.scale(dpr, dpr);
-    W = w; H = h;
-    bh = [{x: W * 0.28, y: H * 0.5}, {x: W * 0.72, y: H * 0.5}];
-    init();
-}
+          <div class="ap-item">
+            <span class="ap-n">04</span>
+            <div class="ap-body">
+              <h4>
+                <span class="fr">Automatisation</span
+                ><span class="en">Automation</span>
+              </h4>
+              <p class="fr">
+                Moins de tâches répétitives, plus de temps pour ce qui compte.
+                <strong>Je construis des choses qui existent.</strong>
+              </p>
+              <p class="en">
+                Less manual work, more time for what matters.
+                <strong>I build things that actually exist.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-function spawnP(){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*1.8,vy:(Math.random()-.5)*1.8,size:6+Math.random()*9,depth:3}}
-function init(){
-    particles=[];for(let i=0;i<22;i++)particles.push(spawnP());
-    lines=[];
-    for(let i=0;i<14;i++){lines.push({bi:i%2,angle:Math.random()*Math.PI*2,speed:(Math.random()-.5)*0.045})}
-}
+      <section id="projects">
+        <div class="inner">
+          <span class="eyebrow reveal"
+            ><span class="fr">Projets</span
+            ><span class="en">Projects</span></span
+          >
 
-function fractal(x, y, r, d){
-    if(d <= 0 || r < 2.2) return;
-    for(let b of bh){
-        const dist = Math.hypot(b.x - x, b.y - y);
-        if(dist < r + 38) return;
-    }
-    ctx.save();
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
-    ctx.strokeStyle='rgba(139,92,246,0.45)'; ctx.lineWidth=0.75; ctx.stroke();
-    ctx.restore();
+          <article class="proj reveal">
+            <div class="proj-head">
+              <h3 class="proj-name">Atlas</h3>
+              <span class="proj-badge live">
+                <span class="fr">LIVE · RENDER + VERCEL</span>
+                <span class="en">LIVE · RENDER + VERCEL</span>
+              </span>
+            </div>
 
-    const sr = r * 0.48;
-    for(let i=0;i<6;i++){
-        const a = i * Math.PI / 3;
-        fractal(x + Math.cos(a)*r*1.15, y + Math.sin(a)*r*1.15, sr, d-1);
-    }
-}
+            <p class="proj-tagline">
+              <span class="fr"
+                >Dashboard de gestion full-stack · Prédictions financières par
+                interpolation polynomiale</span
+              >
+              <span class="en"
+                >Full-stack management dashboard · Financial predictions via
+                polynomial interpolation</span
+              >
+            </p>
 
-function electric(x1,y1,x2,y2){
-    ctx.beginPath(); ctx.moveTo(x1,y1);
-    for(let i=1;i<=11;i++){
-        const t=i/11, now=Date.now()*0.013;
-        ctx.lineTo(x1+(x2-x1)*t + Math.sin(now+i*1.4)*6, y1+(y2-y1)*t + Math.cos(now+i*2.1)*6);
-    }
-    ctx.strokeStyle='rgba(140,160,255,0.38)'; ctx.lineWidth=1.35; ctx.stroke();
-}
+<video
+  data-src="assets/test.mp4"
+  controls
+  muted
+  loop
+  playsinline
+  style="width:100%; border-radius:8px; margin-bottom:2rem; display:block;"
+></video>
 
-function draw(){
-    ctx.clearRect(0,0,W,H);
+            <div class="detail-list">
+              <div class="dl-row">
+                <span class="dl-k"
+                  ><span class="fr">Problème</span
+                  ><span class="en">Problem</span></span
+                >
+                <span class="dl-v">
+                  <span class="fr"
+                    >Gérer étudiants, sessions et revenus multi-sources depuis
+                    des fichiers épars —
+                    <strong>impossible d'avoir une vue globale.</strong></span
+                  >
+                  <span class="en"
+                    >Managing students, sessions and multi-source revenue across
+                    scattered files —
+                    <strong>no single source of truth.</strong></span
+                  >
+                </span>
+              </div>
 
-    const t = (Date.now() - startTime) / 1000;
-    let alpha = 1;
+              <div class="dl-row">
+                <span class="dl-k"
+                  ><span class="fr">Architecture</span
+                  ><span class="en">Arch</span></span
+                >
+                <span class="dl-v">
+                  <span class="fr"
+                    ><strong>Frontend React/TypeScript sur Vercel.</strong>
+                    Backend Node.js / Express / Prisma sur Render. PostgreSQL
+                    via Neon. Sync offline-first côté client — mutations mises
+                    en file et rejouées à la reconnexion.</span
+                  >
+                  <span class="en"
+                    ><strong>React/TypeScript frontend on Vercel.</strong>
+                    Node.js / Express / Prisma backend on Render. PostgreSQL via
+                    Neon. Client-side offline-first sync — mutations queued and
+                    replayed on reconnect.</span
+                  >
+                </span>
+              </div>
 
-    if (t > 6) {
-        let progress = Math.min(1, (t - 6) / 2);
-        alpha = 1 - Math.pow(progress, 2);
-    }
-    const vg=ctx.createRadialGradient(W/2,H/2,H*.08,W/2,H/2,H*.9);
-    vg.addColorStop(0,'rgba(10,10,26,0)'); vg.addColorStop(1,'rgba(10,10,26,0.68)');
-    ctx.fillStyle=vg; ctx.fillRect(0,0,W,H);
+              <div class="dl-row">
+                <span class="dl-k">Trade-offs</span>
+                <span class="dl-v">
+                  <span class="fr"
+                    >Interpolation deg. 3 plus précise — mais
+                    <strong>risque d'overfitting sur petits datasets,</strong>
+                    exposé dans l'UI avec bande de confiance.</span
+                  >
+                  <span class="en"
+                    >Degree-3 polynomial more accurate — but
+                    <strong>overfits on small datasets,</strong> surfaced in the
+                    UI with a confidence band.</span
+                  >
+                </span>
+              </div>
 
-    particles.forEach(p=>{
-        bh.forEach(b=>{
-            const dx=b.x-p.x,dy=b.y-p.y,d=Math.hypot(dx,dy)+12;
-            p.vx+=dx/(d*d)*38 * alpha;
-            p.vy+=dy/(d*d)*38 * alpha;
-        });        
-        const dm=Math.hypot(mouse.x-p.x,mouse.y-p.y);
-        if(dm<140&&dm>5){const f=(140-dm)/140*9; p.vx-=(mouse.x-p.x)/dm*f; p.vy-=(mouse.y-p.y)/dm*f;}
-        p.vx*=.94; p.vy*=.94; p.x+=p.vx; p.y+=p.vy;
-        if(p.x<0||p.x>W||p.y<0||p.y>H) Object.assign(p,spawnP());
-        fractal(p.x,p.y,p.size,p.depth);
+              <div class="dl-row">
+                <span class="dl-k"
+                  ><span class="fr">Résultat</span
+                  ><span class="en">Outcome</span></span
+                >
+                <span class="dl-v">
+                  <span class="fr"
+                    ><strong>En production.</strong> Gestion étudiants ·
+                    sessions · transactions · objectifs financiers · revenus par
+                    catégorie · prédictions par interpolation linéaire et
+                    polynomiale (deg. 1, 2, 3). Facilement adaptable en
+                    dashboard perso.</span
+                  >
+                  <span class="en"
+                    ><strong>Live in production.</strong> Students · sessions ·
+                    transactions · financial goals · revenue by category ·
+                    predictions via linear and polynomial interpolation (deg. 1,
+                    2, 3). Easily repurposed as a personal dashboard.</span
+                  >
+                </span>
+              </div>
+            </div>
+
+            <div class="proj-stack">
+              <span class="stk">React</span>
+              <span class="stk">TypeScript</span>
+              <span class="stk">Node.js</span>
+              <span class="stk">Express</span>
+              <span class="stk">Prisma</span>
+              <span class="stk">PostgreSQL</span>
+              <span class="stk">Neon</span>
+              <span class="stk">Vercel</span>
+              <span class="stk">Render</span>
+            </div>
+
+            <div class="proj-links">
+              <a
+                href="https://data-mapper-plus-admin-5umj.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-fill"
+              >
+                <span class="fr">Voir le dashboard →</span>
+                <span class="en">View dashboard →</span>
+              </a>
+              <a
+                href="https://github.com/pwalaf/data-mapper-plus"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-ghost"
+              >
+                GitHub →
+              </a>
+            </div>
+          </article>
+
+          <article class="proj reveal">
+            <div class="proj-head">
+              <h3 class="proj-name">StudyHub</h3>
+              <span class="proj-badge"
+                ><span class="fr">PRIVÉ · DÉMO DISPO</span
+                ><span class="en">PRIVATE · DEMO AVAIL.</span></span
+              >
+            </div>
+            <p class="proj-tagline">
+              <span class="fr"
+                >Plateforme académique mobile · RAG offline · Cours &
+                communauté</span
+              ><span class="en"
+                >Mobile academic platform · Offline RAG · Courses &
+                community</span
+              >
+            </p>
+<video
+  data-src="assets/test.mp4"
+  controls
+  muted
+  loop
+  playsinline
+  style="width:100%; border-radius:8px; margin-bottom:2rem; display:block;"
+></video>
+            <div class="detail-list">
+              <div class="dl-row">
+                <span class="dl-k"
+                  ><span class="fr">Problème</span
+                  ><span class="en">Problem</span></span
+                ><span class="dl-v"
+                  ><span class="fr"
+                    >Étudiants en zones peu connectées —
+                    <strong
+                      >impossible d'interroger les cours hors ligne.</strong
+                    ></span
+                  ><span class="en"
+                    >Students in low-connectivity areas —
+                    <strong>can't query course materials offline.</strong></span
+                  ></span
+                >
+              </div>
+              <div class="dl-row">
+                <span class="dl-k"
+                  ><span class="fr">Architecture</span
+                  ><span class="en">Arch</span></span
+                ><span class="dl-v"
+                  ><span class="fr"
+                    ><strong>SQLite local</strong> comme source de vérité.
+                    Embeddings compressés on-device. LLM si réseau, fallback
+                    lexical sinon.</span
+                  ><span class="en"
+                    ><strong>Local SQLite</strong> as source of truth.
+                    Compressed embeddings on-device. External LLM online,
+                    lexical fallback offline.</span
+                  ></span
+                >
+              </div>
+              <div class="dl-row">
+                <span class="dl-k">Trade-offs</span
+                ><span class="dl-v"
+                  ><span class="fr"
+                    >Qualité RAG offline inférieure —
+                    <strong>délai accepté par design.</strong></span
+                  ><span class="en"
+                    >Offline RAG lower quality —
+                    <strong>latency accepted by design.</strong></span
+                  ></span
+                >
+              </div>
+              <div class="dl-row">
+                <span class="dl-k">
+                  <span class="fr">Résultat</span>
+                  <span class="en">Outcome</span>
+                </span>
+                <span class="dl-v">
+                  <span class="fr">
+                    Les étudiants peuvent réviser et résoudre des exercices même
+                    sans internet — améliorant leur préparation aux examens et
+                    réduisant leur dépendance au réseau.
+                    <br /><strong>En production</strong> avec 12 utilisateurs
+                    actifs · 40 cours indexés · recherche 100% hors ligne.
+                  </span>
+                  <span class="en">
+                    Students can study and solve exercises without internet —
+                    improving exam preparation and removing network dependency.
+                    <br /><strong>Live in production</strong> with 12 active
+                    users · 40 courses indexed · offline search working 100%
+                    without network.
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="proj-stack">
+              <span class="stk">React Native</span><span class="stk">Expo</span
+              ><span class="stk">Node.js</span
+              ><span class="stk">PostgreSQL</span><span class="stk">SQLite</span
+              ><span class="stk">RAG</span><span class="stk">TypeScript</span>
+            </div>
+            <div class="proj-links">
+              <a
+                href="mailto:pwalaf.dev@gmail.com?subject=StudyHub%20demo"
+                class="btn btn-fill"
+                ><span class="fr">Demander la démo →</span
+                ><span class="en">Request demo →</span></a
+              >
+            </div>
+          </article>
+
+          <article class="proj reveal">
+            <div class="proj-head">
+              <h3 class="proj-name">Budget App</h3>
+              <span class="proj-badge">OPEN SOURCE</span>
+            </div>
+            <p class="proj-tagline">
+              <span class="fr"
+                >Suivi budgétaire offline-first · Zéro donnée transmise</span
+              ><span class="en"
+                >Offline-first budget tracker · Zero data transmitted</span
+              >
+            </p>
+<video
+  data-src="assets/test.mp4"
+  controls
+  muted
+  loop
+  playsinline
+  style="width:100%; border-radius:8px; margin-bottom:2rem; display:block;"
+></video>
+            <div class="detail-list">
+              <div class="dl-row">
+                <span class="dl-k"
+                  ><span class="fr">Problème</span
+                  ><span class="en">Problem</span></span
+                ><span class="dl-v"
+                  ><span class="fr"
+                    >Les apps de budget
+                    <strong
+                      >envoient tes données financières vers un serveur.</strong
+                    >
+                    Bloquant pour beaucoup.</span
+                  ><span class="en"
+                    >Budget apps
+                    <strong>send your financial data to a server.</strong> A
+                    dealbreaker for many users.</span
+                  ></span
+                >
+              </div>
+              <div class="dl-row">
+                <span class="dl-k"
+                  ><span class="fr">Architecture</span
+                  ><span class="en">Arch</span></span
+                ><span class="dl-v"
+                  ><span class="fr"
+                    ><strong>Aucune donnée ne quitte l'appareil.</strong> SQLite
+                    via Expo. Schéma relationnel : catégories, objectifs,
+                    tendances.</span
+                  ><span class="en"
+                    ><strong>No data leaves the device.</strong> SQLite via
+                    Expo. Full relational schema: categories, goals, trend
+                    charts.</span
+                  ></span
+                >
+              </div>
+              <div class="dl-row">
+                <span class="dl-k">Trade-offs</span
+                ><span class="dl-v"
+                  ><span class="fr"
+                    >Pas de sync multi-appareils —
+                    <strong>décision assumée.</strong></span
+                  ><span class="en"
+                    >No cross-device sync —
+                    <strong>deliberate design choice.</strong></span
+                  ></span
+                >
+              </div>
+              <div class="dl-row">
+                <span class="dl-k"
+                  ><span class="fr">Résultat</span
+                  ><span class="en">Outcome</span></span
+                >
+                <span class="dl-v">
+                  <span class="fr"
+                    ><strong>Code public.</strong> Catégories, objectifs,
+                    graphiques de tendance — 100% local. Aucune donnée ne quitte
+                    l'appareil, zéro backend requis.</span
+                  >
+                  <span class="en"
+                    ><strong>Public code.</strong> Categories, goals, trend
+                    charts — 100% local. No data leaves the device, zero backend
+                    required.</span
+                  >
+                </span>
+              </div>
+            </div>
+            <div class="proj-stack">
+              <span class="stk">React Native</span><span class="stk">Expo</span
+              ><span class="stk">SQLite</span
+              ><span class="stk">TypeScript</span>
+            </div>
+            <div class="proj-links">
+              <a
+                href="https://github.com/pwalaf/soa-budget"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-ghost"
+                >GitHub →</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="inner reveal">
+          <span class="eyebrow"
+            ><span class="fr">Compétences</span
+            ><span class="en">Skills</span></span
+          >
+          <div class="skills-grid">
+            <div class="sk-group">
+              <h3>
+                <span class="fr">Maîtrise</span><span class="en">Core</span>
+              </h3>
+              <ul class="sk-list">
+                <li>
+                  JavaScript / TypeScript <span class="sk-lvl hi">CORE</span>
+                </li>
+                <li>React Native + Expo <span class="sk-lvl hi">CORE</span></li>
+                <li>Node.js / REST APIs <span class="sk-lvl hi">CORE</span></li>
+                <li>PostgreSQL · SQLite <span class="sk-lvl hi">CORE</span></li>
+                <li>HTML / CSS <span class="sk-lvl hi">CORE</span></li>
+                <li>Git <span class="sk-lvl hi">CORE</span></li>
+              </ul>
+            </div>
+            <div class="sk-group">
+              <h3>
+                <span class="fr">Mathématiques</span
+                ><span class="en">Mathematics</span>
+              </h3>
+              <ul class="sk-list">
+                <li>
+                  <span class="fr">Optimisation convexe</span
+                  ><span class="en">Convex optimization</span>
+                  <span class="sk-lvl hi">STRONG</span>
+                </li>
+                <li>
+                  <span class="fr">Probabilités & stats</span
+                  ><span class="en">Probability & stats</span>
+                  <span class="sk-lvl hi">STRONG</span>
+                </li>
+                <li>
+                  <span class="fr">Théorie des graphes</span
+                  ><span class="en">Graph theory</span>
+                  <span class="sk-lvl hi">STRONG</span>
+                </li>
+                <li>
+                  <span class="fr">Recherche opéra.</span
+                  ><span class="en">Operations research</span>
+                  <span class="sk-lvl">SOLID</span>
+                </li>
+              </ul>
+            </div>
+            <div class="sk-group">
+              <h3>
+                <span class="fr">En progression</span
+                ><span class="en">Growing</span>
+              </h3>
+              <ul class="sk-list">
+                <li>RAG pipelines <span class="sk-lvl">APPLIED</span></li>
+                <li>
+                  <span class="fr">Intégration LLM</span
+                  ><span class="en">LLM integration</span>
+                  <span class="sk-lvl">LEARNING</span>
+                </li>
+                <li>
+                  <span class="fr">Gouvernance données</span
+                  ><span class="en">Data governance</span>
+                  <span class="sk-lvl">LEARNING</span>
+                </li>
+                <li>Python / NumPy <span class="sk-lvl">FAMILIAR</span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="skills-note">
+            <span class="fr"
+              >Tout ce qui est listé peut être défendu lors d'un entretien
+              technique. Pas de padding de CV.</span
+            ><span class="en"
+              >Everything listed can be defended in a technical interview. No
+              résumé padding.</span
+            >
+          </p>
+        </div>
+      </section>
+
+      <section id="approach">
+        <div class="inner reveal">
+          <span class="eyebrow"
+            ><span class="fr">Méthode de travail</span
+            ><span class="en">How I work</span></span
+          >
+          <div class="ap-item">
+            <span class="ap-n">01</span>
+            <div class="ap-body">
+              <h4>
+                <span class="fr">Contraintes d'abord</span
+                ><span class="en">Constraints first</span>
+              </h4>
+              <p class="fr">
+                Ma formation en maths m'a appris à
+                <strong>formaliser le problème avant de l'attaquer.</strong> Ça
+                évite de refactorer à mi-chemin.
+              </p>
+              <p class="en">
+                My math background taught me to
+                <strong>formalize the problem before solving it.</strong> That
+                prevents mid-project rewrites.
+              </p>
+            </div>
+          </div>
+          <div class="ap-item">
+            <span class="ap-n">02</span>
+            <div class="ap-body">
+              <h4>
+                <span class="fr">Offline-first comme discipline</span
+                ><span class="en">Offline-first as discipline</span>
+              </h4>
+              <p class="fr">
+                Travailler depuis Madagascar était un
+                <strong>forcing function.</strong> Séparer état local et
+                serveur, gérer les conflits, ne jamais supposer le réseau.
+              </p>
+              <p class="en">
+                Working from Madagascar was a
+                <strong>forcing function.</strong> Separate local from server
+                state, handle conflicts, never assume network availability.
+              </p>
+            </div>
+          </div>
+          <div class="ap-item">
+            <span class="ap-n">03</span>
+            <div class="ap-body">
+              <h4>
+                <span class="fr">Honnêteté sur le périmètre</span
+                ><span class="en">Honest about scope</span>
+              </h4>
+              <p class="fr">
+                <strong>J'ai intégré un pipeline RAG en production</strong> — je
+                comprends ses limites. Je préfère être précis sur ce que je sais
+                faire.
+              </p>
+              <p class="en">
+                <strong>I've shipped a RAG pipeline to production</strong> — I
+                understand its limitations. I'd rather be precise about what I
+                can do.
+              </p>
+            </div>
+          </div>
+          <div class="ap-item">
+            <span class="ap-n">04</span>
+            <div class="ap-body">
+              <h4>
+                <span class="fr">Livraison avant perfectionnisme</span
+                ><span class="en">Shipping over perfecting</span>
+              </h4>
+              <p class="fr">
+                StudyHub est en production. Budget App est open source.
+                <strong>Je construis des choses qui existent.</strong>
+              </p>
+              <p class="en">
+                StudyHub is live. Budget App is open source.
+                <strong>I build things that actually exist.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="inner reveal">
+          <span class="eyebrow">Contact</span>
+          <h2 class="ct-head">
+            <span class="fr"
+              >Un problème dans votre gestion ?<br /><em
+                >Je peux vous créer une solution simple.</em
+              ></span
+            >
+            <span class="en"
+              >Struggling with operations?<br /><em
+                >I can build you a simple system.</em
+              ></span
+            >
+          </h2>
+
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: #64748b">
+            <span class="fr"
+              >✔ Prototype gratuit · ✔ Livraison rapide · ✔ Sans
+              engagement</span
+            >
+            <span class="en"
+              >✔ Free prototype · ✔ Fast delivery · ✔ No commitment</span
+            >
+          </p>
+
+          <p class="ct-sub fr">
+            Disponible pour un poste remote junior ou une mission freelance.
+            Réponse sous 24h — français ou anglais.
+          </p>
+          <p class="ct-sub en">
+            Open to a junior remote role or freelance contract. Reply within 24h
+            — English or French.
+          </p>
+          <a href="mailto:pwalaf.dev@gmail.com" class="btn btn-fill"
+            ><span class="fr">Envoyer un email →</span
+            ><span class="en">Send an email →</span></a
+          >
+          <div class="ct-table">
+            <div class="ct-row">
+              <span class="ct-k"
+                ><span class="fr">Missions</span
+                ><span class="en">Available for</span></span
+              >
+              <span class="ct-v">
+                <span class="fr"
+                  >MVP mobile · Intégration API · Architecture offline-first ·
+                  Devis sur demande</span
+                >
+                <span class="en"
+                  >Mobile MVP · API integration · Offline-first architecture ·
+                  Quote on request</span
+                >
+              </span>
+            </div>
+            <div class="ct-row">
+              <span class="ct-k">Email</span
+              ><a href="mailto:pwalaf.dev@gmail.com" class="ct-v"
+                >pwalaf.dev@gmail.com</a
+              >
+            </div>
+            <div class="ct-row">
+              <span class="ct-k">GitHub</span
+              ><a
+                href="https://github.com/pwalaf"
+                target="_blank"
+                rel="noopener"
+                class="ct-v"
+                >github.com/pwalaf</a
+              >
+            </div>
+            <div class="ct-row">
+              <span class="ct-k">LinkedIn</span
+              ><a
+                href="https://www.linkedin.com/in/parfait-rakotomalala-498268392"
+                target="_blank"
+                rel="noopener"
+                class="ct-v"
+                >linkedin.com/in/parfait-rakotomalala-498268392</a
+              >
+            </div>
+            <div class="ct-row">
+              <span class="ct-k"
+                ><span class="fr">Lieu</span
+                ><span class="en">Location</span></span
+              ><span class="ct-v">Madagascar · UTC+3 · Remote</span>
+            </div>
+            <div class="ct-row">
+              <span class="ct-k"
+                ><span class="fr">Langues</span
+                ><span class="en">Languages</span></span
+              ><span class="ct-v"
+                ><span class="fr">Français (natif) · Anglais (pro)</span
+                ><span class="en"
+                  >French (native) · English (professional)</span
+                ></span
+              >
+            </div>
+            <div class="ct-row">
+              <span class="ct-k">CV</span
+              >
+<a href="assets/cv.pdf" target="_blank" rel="noopener" class="ct-v">
+  <span class="fr">Voir le CV ↗</span>
+  <span class="en">View CV ↗</span>
+</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Parfait Rakotomalala</p>
+      <a href="#hero"
+        ><span class="fr">↑ Haut</span><span class="en">↑ Top</span></a
+      >
+    </footer>
+
+    <script>
+
+document.querySelectorAll('video[data-src]').forEach(video => {
+  new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        video.src = video.dataset.src;
+        obs.disconnect();
+      }
     });
-    if (alpha > 0) {
-        ctx.save();
-        ctx.globalAlpha = alpha;
+  }).observe(video);
+});
+      function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
 
-        lines.forEach(l=>{ 
-            l.angle += l.speed * alpha; // ralentit progressivement
-            const b = bh[l.bi];
+document.getElementById('burgerBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
 
-            electric(
+// Ferme le menu si on clique en dehors
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('burgerBtn');
+  if (!menu.contains(e.target) && e.target !== btn) {
+    menu.classList.remove('open');
+  }
+});
+
+      // STARFIELD
+      (function () {
+        const c = document.getElementById("starCanvas");
+        const ctx = c.getContext("2d");
+        let stars = [];
+        function resize() {
+          c.width = window.innerWidth;
+          c.height = window.innerHeight;
+        }
+        function init() {
+          stars = [];
+          for (let i = 0; i < 180; i++)
+            stars.push({
+              x: Math.random() * c.width,
+              y: Math.random() * c.height,
+              r: 0.3 + Math.random() * 0.8,
+              a: 0.2 + Math.random() * 0.7,
+              p: Math.random() * Math.PI * 2,
+              ps: 0.003 + Math.random() * 0.007,
+            });
+        }
+        function draw() {
+          ctx.clearRect(0, 0, c.width, c.height);
+          stars.forEach((s) => {
+            s.p += s.ps;
+            const a = s.a * (0.5 + 0.5 * Math.sin(s.p));
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(203,213,225,${a})`;
+            ctx.fill();
+          });
+          requestAnimationFrame(draw);
+        }
+        resize();
+        init();
+        draw();
+        window.addEventListener("resize", () => {
+          resize();
+          init();
+        });
+      })();
+
+      // BLACK HOLE
+      (function () {
+        const canvas = document.getElementById("heroCanvas");
+        const zone = document.getElementById("heroZone");
+        const ctx = canvas.getContext("2d");
+        let W,
+          H,
+          mouse = { x: 0, y: 0 },
+          particles = [],
+          lines = [],
+          bh = [];
+        let startTime = Date.now();
+
+        function resize() {
+          const dpr = window.devicePixelRatio || 1;
+          const w = window.innerWidth,
+            h = window.innerHeight;
+          canvas.width = w * dpr;
+          canvas.height = h * dpr;
+          ctx.scale(dpr, dpr);
+          W = w;
+          H = h;
+          bh = [
+            { x: W * 0.28, y: H * 0.5 },
+            { x: W * 0.72, y: H * 0.5 },
+          ];
+          init();
+        }
+
+        function spawnP() {
+          return {
+            x: Math.random() * W,
+            y: Math.random() * H,
+            vx: (Math.random() - 0.5) * 1.8,
+            vy: (Math.random() - 0.5) * 1.8,
+            size: 6 + Math.random() * 9,
+            depth: 3,
+          };
+        }
+        function init() {
+          particles = [];
+          for (let i = 0; i < 22; i++) particles.push(spawnP());
+          lines = [];
+          for (let i = 0; i < 14; i++) {
+            lines.push({
+              bi: i % 2,
+              angle: Math.random() * Math.PI * 2,
+              speed: (Math.random() - 0.5) * 0.045,
+            });
+          }
+        }
+
+        function fractal(x, y, r, d) {
+          if (d <= 0 || r < 2.2) return;
+          for (let b of bh) {
+            const dist = Math.hypot(b.x - x, b.y - y);
+            if (dist < r + 38) return;
+          }
+          const isDark =
+            document.documentElement.getAttribute("data-theme") !== "light";
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.strokeStyle = isDark
+            ? "rgba(139,92,246,0.45)"
+            : "rgba(10,10,26,0.25)";
+          ctx.lineWidth = 0.75;
+          ctx.stroke();
+          ctx.restore();
+          const sr = r * 0.48;
+          for (let i = 0; i < 6; i++) {
+            const a = (i * Math.PI) / 3;
+            fractal(
+              x + Math.cos(a) * r * 1.15,
+              y + Math.sin(a) * r * 1.15,
+              sr,
+              d - 1,
+            );
+          }
+        }
+
+        function electric(x1, y1, x2, y2) {
+          const isDark =
+            document.documentElement.getAttribute("data-theme") !== "light";
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          for (let i = 1; i <= 11; i++) {
+            const t = i / 11,
+              now = Date.now() * 0.013;
+            ctx.lineTo(
+              x1 + (x2 - x1) * t + Math.sin(now + i * 1.4) * 6,
+              y1 + (y2 - y1) * t + Math.cos(now + i * 2.1) * 6,
+            );
+          }
+          ctx.strokeStyle = isDark
+            ? "rgba(140,160,255,0.38)"
+            : "rgba(10,10,26,0.2)";
+          ctx.lineWidth = 1.35;
+          ctx.stroke();
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+
+          const t = (Date.now() - startTime) / 1000;
+          let alpha = 1;
+
+          if (t > 6) {
+            let progress = Math.min(1, (t - 6) / 2);
+            alpha = 1 - Math.pow(progress, 2);
+          }
+          const isDark =
+            document.documentElement.getAttribute("data-theme") !== "light";
+          const vg = ctx.createRadialGradient(
+            W / 2,
+            H / 2,
+            H * 0.08,
+            W / 2,
+            H / 2,
+            H * 0.9,
+          );
+          if (isDark) {
+            vg.addColorStop(0, "rgba(5,5,26,0)");
+            vg.addColorStop(1, "rgba(5,5,26,0.72)");
+          } else {
+            vg.addColorStop(0, "rgba(250,250,250,0)");
+            vg.addColorStop(1, "rgba(250,250,250,0)");
+          }
+          ctx.fillStyle = vg;
+          ctx.fillRect(0, 0, W, H);
+
+        particles = particles.filter((p) => {
+        bh.forEach((b) => {
+          const dx = b.x - p.x,
+            dy = b.y - p.y,
+            d = Math.hypot(dx, dy) + 12;
+        const pull = alpha > 0.3 ? 38 : 38 + (1 - alpha) * 300;
+        p.vx += (dx / (d * d)) * pull;
+        p.vy += (dy / (d * d)) * pull;
+        });
+        
+        const dm = Math.hypot(mouse.x - p.x, mouse.y - p.y);
+        if (dm < 140 && dm > 5) {
+          const f = ((140 - dm) / 140) * 9;
+          p.vx -= ((mouse.x - p.x) / dm) * f;
+          p.vy -= ((mouse.y - p.y) / dm) * f;
+        }
+        p.vx *= 0.94;
+        p.vy *= 0.94;
+        p.x += p.vx;
+        p.y += p.vy;
+        if (bh.some(b => Math.hypot(b.x - p.x, b.y - p.y) < 26)) return false;
+        if (p.x < 0 || p.x > W || p.y < 0 || p.y > H) {
+          if (alpha > 0.3) { Object.assign(p, spawnP()); return true; }
+          return false;
+        }
+        fractal(p.x, p.y, p.size, p.depth);
+        return true;
+        });
+        if (alpha <= 0) particles = [];
+          if (alpha > 0) {
+            ctx.save();
+            ctx.globalAlpha = alpha;
+
+            lines.forEach((l) => {
+              l.angle += l.speed * alpha; // ralentit progressivement
+              const b = bh[l.bi];
+
+              electric(
                 b.x,
                 b.y,
                 b.x + Math.cos(l.angle) * 68,
-                b.y + Math.sin(l.angle) * 68
-            );
+                b.y + Math.sin(l.angle) * 68,
+              );
+            });
+
+            ctx.restore();
+          }
+
+          if (alpha > 0) {
+            bh.forEach((b) => {
+              ctx.save();
+              ctx.globalAlpha = alpha;
+
+              // Dans le bloc bh.forEach, remplace les fillStyle :
+              const isDarkBh =
+                document.documentElement.getAttribute("data-theme") !== "light";
+
+              const glow = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, 78);
+              glow.addColorStop(
+                0,
+                isDarkBh ? "rgba(139,92,246,0.28)" : "rgba(10,10,26,0.12)",
+              );
+              glow.addColorStop(1, "rgba(0,0,0,0)");
+              ctx.fillStyle = glow;
+              ctx.beginPath();
+              ctx.arc(b.x, b.y, 78, 0, Math.PI * 2);
+              ctx.fill();
+
+              ctx.beginPath();
+              ctx.arc(b.x, b.y, 26, 0, Math.PI * 2);
+              ctx.fillStyle = isDarkBh ? "#05051a" : "#fafafa";
+              ctx.fill();
+
+              ctx.strokeStyle = isDarkBh
+                ? "rgba(139,92,246,0.75)"
+                : "rgba(10,10,26,0.6)";
+              ctx.lineWidth = 2.5;
+              ctx.stroke();
+
+              ctx.restore();
+            });
+          }
+
+          requestAnimationFrame(draw);
+        }
+
+        resize();
+        draw();
+        window.addEventListener("resize", resize);
+        zone.addEventListener("mousemove", (e) => {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+        });
+        zone.addEventListener(
+          "touchmove",
+          (e) => {
+            if (e.touches.length > 0) {
+              mouse.x = e.touches[0].clientX;
+              mouse.y = e.touches[0].clientY;
+            }
+          },
+          { passive: false },
+        );
+      })();
+
+      /* LANG */
+      (function () {
+        const html = document.documentElement;
+        function syncLang(l) {
+          ["langToggle", "mLang"].forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = l === "fr" ? "EN" : "FR";
+          });
+        }
+        html.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme") || "dark",
+        );
+        const sl = localStorage.getItem("lang") || "fr";
+        html.setAttribute("data-lang", sl);
+        html.lang = sl;
+        syncLang(sl);
+
+        ["themeToggle", "mTheme"].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el)
+            el.addEventListener("click", () => {
+              const n =
+                html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+              html.setAttribute("data-theme", n);
+              localStorage.setItem("theme", n);
+            });
+        });
+        ["langToggle", "mLang"].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el)
+            el.addEventListener("click", () => {
+              const n = html.getAttribute("data-lang") === "fr" ? "en" : "fr";
+              html.setAttribute("data-lang", n);
+              html.lang = n;
+              localStorage.setItem("lang", n);
+              syncLang(n);
+            });
         });
 
-        ctx.restore();
-    }
+        const secs = document.querySelectorAll("section[id]");
+        const links = document.querySelectorAll("#sidenav .nav-links a");
+        new IntersectionObserver(
+          (es) => {
+            es.forEach((e) => {
+              if (e.isIntersecting)
+                links.forEach((a) =>
+                  a.classList.toggle(
+                    "active",
+                    a.getAttribute("href") === "#" + e.target.id,
+                  ),
+                );
+            });
+          },
+          { rootMargin: "-30% 0px -60% 0px" },
+        ).observe &&
+          secs.forEach((s) =>
+            new IntersectionObserver(
+              (es) => {
+                es.forEach((e) => {
+                  if (e.isIntersecting)
+                    links.forEach((a) =>
+                      a.classList.toggle(
+                        "active",
+                        a.getAttribute("href") === "#" + e.target.id,
+                      ),
+                    );
+                });
+              },
+              { rootMargin: "-30% 0px -60% 0px" },
+            ).observe(s),
+          );
 
-if (alpha > 0) {
-    bh.forEach(b=>{
-        ctx.save();
-        ctx.globalAlpha = alpha;
-
-        const glow=ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,78);
-        glow.addColorStop(0,'rgba(139,92,246,0.28)');
-        glow.addColorStop(1,'rgba(0,0,0,0)');
-        ctx.fillStyle=glow;
-        ctx.beginPath();
-        ctx.arc(b.x,b.y,78,0,Math.PI*2);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(b.x,b.y,26,0,Math.PI*2);
-        ctx.fillStyle='#0a0a1a';
-        ctx.fill();
-
-        ctx.strokeStyle='rgba(139,92,246,0.75)';
-        ctx.lineWidth=2.5;
-        ctx.stroke();
-
-        ctx.restore();
-    });
-}
-
-    requestAnimationFrame(draw);
-}
-
-resize(); draw();
-window.addEventListener('resize',resize);
-zone.addEventListener('mousemove',e=>{mouse.x=e.clientX; mouse.y=e.clientY});
-zone.addEventListener('touchmove',e=>{if(e.touches.length>0){mouse.x=e.touches[0].clientX; mouse.y=e.touches[0].clientY}}, {passive:false});
-})();
+        new IntersectionObserver(
+          (es) => {
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            });
+          },
+          { threshold: 0.08 },
+        ).observe &&
+          document.querySelectorAll(".reveal").forEach((el) =>
+            new IntersectionObserver(
+              (es) => {
+                es.forEach((e) => {
+                  if (e.isIntersecting) e.target.classList.add("in");
+                });
+              },
+              { threshold: 0.08 },
+            ).observe(el),
+          );
+      })();
 
 
-/* LANG */
-(function(){
-  const html=document.documentElement;
-  function syncLang(l){['langToggle','mLang'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=l==='fr'?'EN':'FR'})}
-  html.setAttribute('data-theme',localStorage.getItem('theme')||'dark');
-  const sl=localStorage.getItem('lang')||'fr';
-  html.setAttribute('data-lang',sl);html.lang=sl;syncLang(sl);
-
-  ['themeToggle','mTheme'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('click',()=>{const n=html.getAttribute('data-theme')==='dark'?'light':'dark';html.setAttribute('data-theme',n);localStorage.setItem('theme',n)})});
-  ['langToggle','mLang'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('click',()=>{const n=html.getAttribute('data-lang')==='fr'?'en':'fr';html.setAttribute('data-lang',n);html.lang=n;localStorage.setItem('lang',n);syncLang(n)})});
-
-  const secs=document.querySelectorAll('section[id]');
-  const links=document.querySelectorAll('#sidenav .nav-links a');
-  new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))})},{rootMargin:'-30% 0px -60% 0px'}).observe&&secs.forEach(s=>new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))})},{rootMargin:'-30% 0px -60% 0px'}).observe(s));
-
-  new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.08}).observe&&document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.08}).observe(el));
-})();
-
-/* MODAL */
-function openVideo(){document.getElementById('videoModal').style.display='flex';document.body.style.overflow='hidden'}
-function closeVideo(){document.getElementById('videoModal').style.display='none';document.body.style.overflow=''}
-document.getElementById('videoModal').addEventListener('click',function(e){if(e.target===this)closeVideo()});
-
-(function(){
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
+      (function () {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
                 const container = entry.target;
-                container.classList.add('in');
+                container.classList.add("in");
 
                 // Animation décalée des enfants
-                const children = container.querySelectorAll('.reveal-child');
+                const children = container.querySelectorAll(".reveal-child");
                 children.forEach((child, index) => {
-                    setTimeout(() => {
-                        child.classList.add('in');
-                    }, 60 + index * 90);   // beau décalage progressif
+                  setTimeout(
+                    () => {
+                      child.classList.add("in");
+                    },
+                    60 + index * 90,
+                  ); // beau décalage progressif
                 });
-            }
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: "-60px 0px -100px 0px",
+          },
+        );
+
+        // Observer toutes les sections
+        document.querySelectorAll("section .inner").forEach((inner) => {
+          observer.observe(inner);
         });
-    }, {
-        threshold: 0.12,
-        rootMargin: "-60px 0px -100px 0px"
-    });
-
-    // Observer toutes les sections
-    document.querySelectorAll('section .inner').forEach(inner => {
-        observer.observe(inner);
-    });
-})();
-
-</script>
-</body>
+      })();
+    </script>
+  </body>
 </html>
