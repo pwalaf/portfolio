@@ -240,7 +240,7 @@ document.addEventListener('click', (e) => {
             ctx.globalAlpha = alpha;
 
             lines.forEach((l) => {
-              l.angle += l.speed * alpha; // ralentit progressivement
+              l.angle += l.speed * alpha;
               const b = bh[l.bi];
 
               electric(
@@ -413,7 +413,6 @@ document.addEventListener('click', (e) => {
                 const container = entry.target;
                 container.classList.add("in");
 
-                // Animation décalée des enfants
                 const children = container.querySelectorAll(".reveal-child");
                 children.forEach((child, index) => {
                   setTimeout(
@@ -421,7 +420,7 @@ document.addEventListener('click', (e) => {
                       child.classList.add("in");
                     },
                     60 + index * 90,
-                  ); // beau décalage progressif
+                  ); 
                 });
               }
             });
