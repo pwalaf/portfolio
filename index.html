@@ -631,6 +631,10 @@
       }
 
  
+     .about-text, .dl-v {
+          text-align: justify;
+          
+      }
 
       .detail-list {
         display: flex;
@@ -888,7 +892,7 @@
         gap: 0.4rem;
       }
 
-      /* REVEAL PROGRESSIF AU SCROLL */
+      /* REVEAL */
       .reveal {
         opacity: 0;
         transform: translateY(40px);
@@ -900,7 +904,7 @@
         transform: translateY(0);
       }
 
-      /* Stagger (décalage progressif) pour les enfants */
+      /* Stagger */
       .reveal-child {
         opacity: 0;
         transform: translateY(30px);
@@ -1071,7 +1075,7 @@
           <p class="about-text fr">
             Développeur full-stack avec une formation en
             <strong>mathématiques appliquées</strong> — optimisation,
-            probabilités, graphes. Je modélise les contraintes avant d'écrire la
+            probabilités, graphes. <br>Je modélise les contraintes avant d'écrire la
             première ligne de code. Travailler depuis Madagascar m'a appris à
             concevoir des systèmes
             <strong>robustes sans dépendance réseau</strong>.
@@ -1079,7 +1083,7 @@
           <p class="about-text en">
             Full-stack developer with a background in
             <strong>applied mathematics</strong> — optimization, probability,
-            graph theory. I model constraints before writing a single line of
+            graph theory. <br>I model constraints before writing a single line of
             code. Working from Madagascar taught me to build systems that are
             <strong>robust without network dependency</strong>.
           </p>
@@ -1272,7 +1276,7 @@
             </p>
 
 <video
-  data-src="assets/test.mp4"
+  data-src="assets/atlas.mkv"
   controls
   muted
   loop
@@ -1288,8 +1292,7 @@
                 >
                 <span class="dl-v">
                   <span class="fr"
-                    >Gérer étudiants, sessions et revenus multi-sources depuis
-                    des fichiers épars —
+                    >Gestion des étudiants, des sessions et des revenus provenant de sources multiples, répartis dans des fichiers dispersés —
                     <strong>impossible d'avoir une vue globale.</strong></span
                   >
                   <span class="en"
@@ -1344,7 +1347,7 @@
                 >
                 <span class="dl-v">
                   <span class="fr"
-                    ><strong>En production.</strong> Gestion étudiants ·
+                    ><strong>En production.</strong> Gestion des étudiants ·
                     sessions · transactions · objectifs financiers · revenus par
                     catégorie · prédictions par interpolation linéaire et
                     polynomiale (deg. 1, 2, 3). Facilement adaptable en
@@ -1411,12 +1414,12 @@
               >
             </p>
 <video
-  data-src="assets/test.mp4"
+  data-src="assets/studyhub.mp4"
   controls
   muted
   loop
   playsinline
-  style="width:100%; border-radius:8px; margin-bottom:2rem; display:block;"
+  style="width:50%; margin: 0 auto; border-radius:8px; margin-bottom:2rem; display:block;"
 ></video>
             <div class="detail-list">
               <div class="dl-row">
@@ -1515,12 +1518,12 @@
               >
             </p>
 <video
-  data-src="assets/test.mp4"
+  data-src="assets/soabudget.mp4"
   controls
   muted
   loop
   playsinline
-  style="width:100%; border-radius:8px; margin-bottom:2rem; display:block;"
+  style="width:50%; margin: 0 auto; border-radius:8px; margin-bottom:2rem; display:block;"
 ></video>
             <div class="detail-list">
               <div class="dl-row">
@@ -1548,9 +1551,9 @@
                 ><span class="dl-v"
                   ><span class="fr"
                     ><strong>Aucune donnée ne quitte l'appareil.</strong> SQLite
-                    via Expo. Schéma relationnel : catégories, objectifs,
-                    tendances.</span
-                  ><span class="en"
+                    via Expo. Schéma relationnel : catégories des dépenses, objectifs financiers.
+                    </span>
+                    <span class="en"
                     ><strong>No data leaves the device.</strong> SQLite via
                     Expo. Full relational schema: categories, goals, trend
                     charts.</span
@@ -1576,8 +1579,8 @@
                 >
                 <span class="dl-v">
                   <span class="fr"
-                    ><strong>Code public.</strong> Catégories, objectifs,
-                    graphiques de tendance — 100% local. Aucune donnée ne quitte
+                    ><strong>Code public.</strong> Catégories des dépenses, objectifs financiers
+                     — 100% local. Aucune donnée ne quitte
                     l'appareil, zéro backend requis.</span
                   >
                   <span class="en"
@@ -1891,6 +1894,14 @@
     </footer>
 
     <script>
+
+document.querySelectorAll('video').forEach(video => {
+  video.addEventListener('play', () => {
+    document.querySelectorAll('video').forEach(other => {
+      if (other !== video) other.pause();
+    });
+  });
+});
 
 document.querySelectorAll('video[data-src]').forEach(video => {
   new IntersectionObserver((entries, obs) => {
