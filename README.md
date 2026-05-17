@@ -22,4 +22,4 @@ Clone the repo and open `index.html` in your browser — no build step required.
 
 ## Live
 
-[rija.vercel.app](https://parfait.vercel.app)
+[parfait.vercel.app](https://parfait.vercel.app)
