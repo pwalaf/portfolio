@@ -22,4 +22,4 @@ Clone the repo and open `index.html` in your browser — no build step required.
 
 ## Live
 
-[parfait.vercel.app](https://parfait.vercel.app)
+[parfait.vercel.app](https://portfolio-blue-sigma-64.vercel.app/)
