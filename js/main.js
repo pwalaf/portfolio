@@ -1,3 +1,6 @@
+document.getElementById('footer-text').textContent = `© ${new Date().getFullYear()} Parfait Rakotomalala`;
+
+
 document.querySelectorAll('video').forEach(video => {
   video.addEventListener('play', () => {
     document.querySelectorAll('video').forEach(other => {
@@ -35,6 +38,7 @@ document.addEventListener('click', (e) => {
 
       // STARFIELD
       (function () {
+
         const c = document.getElementById("starCanvas");
         const ctx = c.getContext("2d");
         let stars = [];
