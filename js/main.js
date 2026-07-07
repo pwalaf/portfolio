@@ -115,7 +115,7 @@ document.addEventListener('click', (e) => {
             vx: (Math.random() - 0.5) * 1.8,
             vy: (Math.random() - 0.5) * 1.8,
             size: 6 + Math.random() * 9,
-            depth: 3,
+            depth: 2,
           };
         }
         function init() {
@@ -190,6 +190,14 @@ document.addEventListener('click', (e) => {
             let progress = Math.min(1, (t - 6) / 2);
             alpha = 1 - Math.pow(progress, 2);
           }
+
+          if (alpha <= 0) {
+            // Effet totalement fondu : on arrête la boucle requestAnimationFrame
+            // au lieu de la laisser tourner à l'infini (elle tournait avant en
+            // continu pendant toute la durée de vie de la page, même invisible).
+            particles = [];
+            return;
+          }
           const isDark =
             document.documentElement.getAttribute("data-theme") !== "light";
           const vg = ctx.createRadialGradient(
@@ -238,7 +246,6 @@ document.addEventListener('click', (e) => {
         fractal(p.x, p.y, p.size, p.depth);
         return true;
         });
-        if (alpha <= 0) particles = [];
           if (alpha > 0) {
             ctx.save();
             ctx.globalAlpha = alpha;
@@ -357,7 +364,7 @@ document.addEventListener('click', (e) => {
 
         const secs = document.querySelectorAll("section[id]");
         const links = document.querySelectorAll("#sidenav .nav-links a");
-        new IntersectionObserver(
+        const navObserver = new IntersectionObserver(
           (es) => {
             es.forEach((e) => {
               if (e.isIntersecting)
@@ -370,73 +377,18 @@ document.addEventListener('click', (e) => {
             });
           },
           { rootMargin: "-30% 0px -60% 0px" },
-        ).observe &&
-          secs.forEach((s) =>
-            new IntersectionObserver(
-              (es) => {
-                es.forEach((e) => {
-                  if (e.isIntersecting)
-                    links.forEach((a) =>
-                      a.classList.toggle(
-                        "active",
-                        a.getAttribute("href") === "#" + e.target.id,
-                      ),
-                    );
-                });
-              },
-              { rootMargin: "-30% 0px -60% 0px" },
-            ).observe(s),
-          );
+        );
+        secs.forEach((s) => navObserver.observe(s));
 
-        new IntersectionObserver(
+        const revealObserver = new IntersectionObserver(
           (es) => {
             es.forEach((e) => {
               if (e.isIntersecting) e.target.classList.add("in");
             });
           },
           { threshold: 0.08 },
-        ).observe &&
-          document.querySelectorAll(".reveal").forEach((el) =>
-            new IntersectionObserver(
-              (es) => {
-                es.forEach((e) => {
-                  if (e.isIntersecting) e.target.classList.add("in");
-                });
-              },
-              { threshold: 0.08 },
-            ).observe(el),
-          );
-      })();
-
-
-      (function () {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const container = entry.target;
-                container.classList.add("in");
-
-                const children = container.querySelectorAll(".reveal-child");
-                children.forEach((child, index) => {
-                  setTimeout(
-                    () => {
-                      child.classList.add("in");
-                    },
-                    60 + index * 90,
-                  ); 
-                });
-              }
-            });
-          },
-          {
-            threshold: 0.12,
-            rootMargin: "-60px 0px -100px 0px",
-          },
         );
-
-        // Observer toutes les sections
-        document.querySelectorAll("section .inner").forEach((inner) => {
-          observer.observe(inner);
-        });
+        document
+          .querySelectorAll(".reveal")
+          .forEach((el) => revealObserver.observe(el));
       })();
